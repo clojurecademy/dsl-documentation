@@ -919,12 +919,12 @@ Like we said if you change name identifier that component will be deactivated(no
 <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;;checks that str/join function declared in user&#39;scode</span>
 <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">str-join-used?</span>
-  <span class="tok-p">[</span><span class="tok-nv">codes</span><span class="tok-p">]</span>
-  <span class="tok-p">((</span><span class="tok-nb">complement </span><span class="tok-nv">not-any?</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-k">fn </span><span class="tok-p">[</span><span class="tok-nv">code</span><span class="tok-p">]</span>
-                           <span class="tok-p">(</span><span class="tok-nb">and </span><span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-ss">&#39;str/join</span> <span class="tok-p">(</span><span class="tok-nb">first </span><span class="tok-nv">code</span><span class="tok-p">))</span>
-                                <span class="tok-p">(</span><span class="tok-nb">vector? </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">code</span><span class="tok-p">))</span>
-                                <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-mi">2</span> <span class="tok-p">(</span><span class="tok-nb">count </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">code</span><span class="tok-p">)))))</span>
-    <span class="tok-p">(</span><span class="tok-nb">filter </span><span class="tok-nv">list?</span> <span class="tok-nv">codes</span><span class="tok-p">)))</span></code></pre>
+  <span class="tok-p">[</span><span class="tok-nv">all-forms</span><span class="tok-p">]</span>
+  <span class="tok-p">((</span><span class="tok-nb">complement </span><span class="tok-nv">not-any?</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-k">fn </span><span class="tok-p">[</span><span class="tok-nv">form</span><span class="tok-p">]</span>
+                           <span class="tok-p">(</span><span class="tok-nb">and </span><span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-ss">&#39;str/join</span> <span class="tok-p">(</span><span class="tok-nb">first </span><span class="tok-nv">form</span><span class="tok-p">))</span>
+                                <span class="tok-p">(</span><span class="tok-nb">vector? </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">form</span><span class="tok-p">))</span>
+                                <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-mi">2</span> <span class="tok-p">(</span><span class="tok-nb">count </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">form</span><span class="tok-p">)))))</span>
+    <span class="tok-p">(</span><span class="tok-nb">filter </span><span class="tok-nv">list?</span> <span class="tok-nv">all-forms</span><span class="tok-p">)))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1112,7 +1112,7 @@ limitations under the License.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-09 19:09:23 CEST
+Last updated 2017-09-09 19:59:16 CEST
 </div>
 </div>
 </body>
