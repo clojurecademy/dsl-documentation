@@ -404,7 +404,7 @@ Also you might want users to use *specific functions* to construct their code an
 (is (= (my-last [1 2 3 4 5]) 4))
 ;;  Error: (= 5 4) -> This assertion does not return true!
 
-You can override error message if you want to:
+;You can override error message if you want to:
 (is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!")
 ;;  Error: (= 5 4) -> Overwritten error message, it fails!
 
