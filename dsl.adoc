@@ -60,7 +60,7 @@ Let's open sample-course.clj file and define our manifest.
 
 [source, clojure]
 ----
-(ns data.course
+(ns clj.core
   (:require [clojurecademy.dsl.core :refer :all]))
 
 (def my-manifest
