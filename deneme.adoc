@@ -1,0 +1,666 @@
+= Clojurecademy DSL Documentation
+Ertuğrul Çetin - 1.0.0
+:toc: left
+:!numbered:
+:idseparator: -
+:idprefix:
+:sectlinks:
+:source-highlighter: pygments
+:pygments-style: friendly
+
+== Introduction
+
+DSL for creating courses on Clojurecademy
+
+
+== Rationale
+
+The main motivations for creating Clojurecademy are:
+
+* I want Clojure community to grow and try to help with this project to make it happen.
+* Making Clojure adoption as much easy as possible for new comers.(without initial setup etc.)
+* Making possible to teach anything related to programming in Clojure(e.g. Algorithms & Data Structures to Data Science).
+* Having good Clojure resources in any field by contributing Clojurecademy's courses together.
+* Giving back to the community.
+
+
+== Requirements
+
+* Clojure 1.8
+* Java 8
+* Leiningen 2.7.1+
+
+
+== Getting Started
+
+Let's create new lein project
+
+`lein new app sample-course`
+
+The easiest way to use DSL in a Clojure project is by including it as a dependency in your *_project.clj_*:
+
+`[clojurecademy/dsl "0.1.0"]`
+
+Also, you need to add lein plugin for DSL as well:
+
+`[clojurecademy/lein-clojurecademy "0.1.0"]`
+
+== Components
+
+There are several components to create a course such as `manifest`, `course`, `chapter`, `sub-chapter`, `subject`, `instruction`, `sub-instruction` and so on, now we are going to examine those components in detail.
+
+image::img-1.png[]
+image::img-2.png[]
+
+=== manifest
+
+Every Clojurecademy course needs a manifest which specifies main characteristics of a course such as a name, descriptions and so on.
+
+Let's open sample-course.clj file and define our manifest.
+
+[source, clojure]
+----
+(ns data.course
+  (:require [clojurecademy.dsl.core :refer :all]))
+
+(def my-manifest
+  (manifest :title "Sample Course"
+            :report-bug-email-or-link "https://github.com/clojurecademy/sample-course/issues"
+            :name 'sample-course
+            :skip? true
+            :short-description "Sample Course Project for Clojurecademy DSL"
+            :long-description "It's designed to teach \"How to make a course on Clojurecademy?\""
+            :who-is-this-course-for :no-programming-experience))
+----
+
+|===
+
+| :title | Title of a course.
+
+| :report-bug-email-or-link | Email address or URL that related to the course(e.g. GitHub issue page URL) so users of your course can submit a bug report to you.
+
+| :name | Unique identifier for your project if you change it you will be creating new course so keep it that way unless you want same course couple of times.
+
+| :skip? | When it's false that means users can't jump into chapters randomly they need to go step by step from scratch, if it's true they can jump into any chapter randomly and skip it whenever they want.
+
+| :short-description | Short description for a course which is limited to 125 characters.
+
+| :long-description | Long description for a course which is limited to 600 characters.
+
+| :who-is-this-course-for | Defining who should enroll this course such as people with no programming experience or people with some Clojure experience and so on.There are 3 predefined keywords(that turn into some strings).
+|===
+
+
+
+3 predefined options of `:who-is-this-course-for`
+
+|===
+
+| Keyword  | Equivalent String
+| :clojure-experience | "This course requires some Clojure experience."
+| :programming-experience | "This course requires some programming experience, Clojure experience is NOT required."
+| :no-programming-experience | "This course does not require any programming experience, it's for total beginners to programming."
+| *or you can override it with a string, such as: | "This course is for ........"
+|===
+
+
+=== course
+
+Now we are going to construct a course, let's define our course like this(don't worry we will talk about every component in detail later on):
+[source, clojure]
+----
+;;We name it like course-map because under the hood DSL creates huge map data structure basically
+;;all components made from Clojure maps
+(def course-map
+  (course my-manifest
+          (chapter 'ch-intro ;name identifier for chapter
+                   "Intro to Clojure" ;title for chapter
+
+                   (sub-chapter
+                     'sub-ch-basics ;name identifier for sub chapter
+                     "Basics" ;title for sub chapter
+
+                     (subject
+                       'sub-about-clojure ;name identifier for subject
+                       "Aobut Clojure" ;title for subject
+
+                       (learn ;learn part for subject
+                         (text
+                           (p "Clojure is a functional programming that runs on JVM."))))))))
+----
+
+We created our simple course without any instructions(we will talk about it) so what do we have up there?:
+
+* Course takes one manifest and multiple chapters as parameters.
+
+* Chapter takes name identifier, title and multiple sub chapters as parameters.
+
+* Sub Chapter takes name identifier, title and multiple subjects as parameters.
+
+* Subject takes name identifier, title and one instruction(and optional other components as well).
+
+{nbsp} +
+
+We need to make sure that our course is *valid* and going to run this command:
+
+`lein clojurecademy test`
+
+{nbsp} +
+Got the following _error_:
+
+Missing `:clojurecademy` option in *project.clj*. You need to have a line in your *project.clj* file that looks like:
+  `:clojurecademy {:course-map your.ns/course-map}`
+
+
+That output means we need to define our _course-map_ in project.clj file so let's open our project.clj file and add this line:
+
+`:clojurecademy {:course-map clj.core/course-map}`
+
+Also we have to add this option as well:
+
+`:eval-in :leiningen`
+
+Then try again that `lein clojurecademy test`, you should get the following output:
+
+`Map is valid. There is no test var defined.Please add _defcoursetest_ for testing.`
+
+Now we get this success output which means our course is valid and we need to have at least one subject which has *instruction* then we will be able to deploy to Clojurecademy.
+
+{nbsp} +
+Now we are going to extend our course with an instruction so we will be able to expect users to provide some input and validate their input that it's valid or not.Here is the extended version that one subject(`subj-hello-world`) added to sub chapter called `sub-ch-basics`:
+
+[source, clojure]
+----
+(sub-chapter
+  'sub-ch-basics
+  "Basics"
+
+  (subject
+    'subj-about-clojure
+    "About Clojure"
+
+    (learn
+      (text
+        (p "Clojure is a functional programming that runs on JVM."))))
+
+  (subject
+    'subj-hello-world
+    "Hello, World"
+
+    (learn
+      (text
+        (p "Now we are going to use Clojure's print functionality to see some output.Please follow the instructions")))
+    (instruction 'ins-clojure-helloworld ;name identifier
+                 (run-pre-tests? false)
+                 (initial-code :none)
+                 (rule :no-rule? true)
+
+                 (sub-instruction 'sub-ins-hello-world ;name identifier
+                                  (text
+                                    (p "Please print \"Hello, World\" to console "
+                                       "then click the Run button to see the result"))
+                                  (testing
+                                    (is (form-used? (println "Hello, World"))))))
+    'hello-world))
+----
+
+As you can see in this instruction we are asking users to write `(println "Hello, World")` and click *Run* button, so we can validate their input. We are going to talk about components that used in here(`run-pre-tests?`, `initial-code`, etc.) in the following sections.
+
+Instruction can have multiple `sub-instruction` components and we have one here, every `sub-instruction` can have one `text`(for telling the user what to do) and one `testing` component, since we can have multiple `is` components within testing it’s easy to write many `is` _assertions_ to validate given input.
+
+In the example `is` component takes a form which is supposed to return either _true_ or _false_ if it is true test passes if not it fails. `form-used?` is a predefined function in the platform basically it checks the given form that exists in the user's code. You can check <<Predefined Functions>>.
+
+At the bottom `'hello-world` indicates namespace of our subject.
+
+Let's run our command to be sure that we are on the right track:
+
+`lein clojurecademy test`
+
+Here what we get(again):
+
+`Map is valid. There is no test var defined.Please add _defcoursetest_ for testing.`
+
+Let's focus on this message: `There is no test var defined.Please add _defcoursetest_ for testing.` which means we need to write a test(not the test we know of) that validates our instruction so we will be sure that this instruction has a *working solution*, the thing is we are going to write user's code(code that users provide to pass instruction).
+
+{nbsp} +
+Before writing test we need to add required ns:
+
+`[clojurecademy.dsl.test :refer [defcoursetest]]`
+
+{nbsp} +
+Now, please add following code under the _course-map_, then run `lein clojurecademy test`:
+
+[source, clojure]
+----
+(defcoursetest my-test
+  [ch-intro sub-ch-basics subj-hello-world ins-clojure-helloworld sub-ins-hello-world]
+  (println "Hello, World"))
+----
+
+Here is the output which indicates everything is fine and you are ready to deploy your course to _Clojurecademy_:
+
+`Map is valid.{nbsp} +
+Hello, World{nbsp} +
+1 routes passed.`
+
+Every `sub-instruction` needs `defcoursetest` and you can define your test where ever you like in clj files. Let's examine `defcoursetest` in depth:
+
+`my-test` is name identifier for `defcoursetest` which should be *unique* it works like *def* in Clojure.
+
+`[ch-intro sub-ch-basics subj-hello-world ins-clojure-helloworld sub-ins-hello-world]` indicates route for this sub instruction. From `chapter` to `sub-instruction` _(using name identifiers)_
+
+`(println "Hello, World")` it's assumed that users code _(code that provided by user)_
+
+{nbsp} +
+If you want to see your course on Clojurecademy immediately you can check here(<<Deployment>>), you can regularly deploy your course as you add/change something in your course and see it visually all the time.
+
+{nbsp} +
+We said that instruction can have multiple `sub-instruction` components so let's add new subject called `subj-math-fns` under the `subj-hello-world`:
+
+[source, clojure]
+----
+(subject
+  'subj-math-fns
+  "Let's write some math functions"
+
+  (learn
+    (text
+      (p "To understand Clojure comprehensively we are going to write some basic math functions in this section.")))
+  (instruction 'ins-subj-math-fns
+               (run-pre-tests? false)
+               (initial-code :none)
+               (rule :no-rule? true)
+
+               (sub-instruction 'sub-ins-my-add
+                                (text
+                                  (p "Please write a function called "
+                                     (hi "my-add")
+                                     " which adds given numbers"))
+                                (testing
+                                  (is (= (my-add 1) 1))
+                                  (is (= (my-add 1 2) 3))
+                                  (is (= (my-add 1 2 3 4 5 6) 21))))
+
+               (sub-instruction 'sub-ins-my-subs
+                                (text
+                                  (p "Please write a function called "
+                                     (hi "my-subs")
+                                     " which subtracts given numbers"))
+                                (testing
+                                  (is (= (my-subs 1) -1))
+                                  (is (= (my-subs 2 1) 1))
+                                  (is (= (my-subs 100 1 2 3 4 5) 85)))))
+  'subj-math-fns)
+----
+
+And it's `defcourtests` would be like this:
+
+[source, clojure]
+----
+(defcoursetest my-test-2
+               [ch-intro sub-ch-basics subj-math-fns ins-subj-math-fns sub-ins-my-add]
+               (defn my-add
+                 [& args]
+                 (apply + args)))
+
+(defcoursetest my-test-3
+               [ch-intro sub-ch-basics subj-math-fns ins-subj-math-fns sub-ins-my-subs]
+               (defn my-subs
+                 [& args]
+                 (apply - args)))
+----
+
+=== run-pre-test?
+`run-pre-test?` can have either *true* or *false* as a parameter, if it is true sub instructions before current sub instruction going to be checked(_e.g. before executing 3. instruction 1. and 2. instructions going to be executed to check that they pass or not_), if false current sub instruction will be checked only.
+
+=== initial-code
+
+`initial-code` is Clojure code that will be provided in the editor to users, there are couple of ways to initialize `initial-code`.
+
+Since `initial-code` is a *macro* you can provide simple Clojure code like this:
+
+`(initial-code (println "Hello, World"))`
+
+You should use such a form when you don't need formatting(_single line codes are perfect for that purpose_)
+
+{nbsp} +
+You can provide code in a string form(_it's good when you need nice formatting in the editor_):
+
+`(initial-code "(defn my-add\n  [a b]\n  (+ a b))")`
+
+Also `initial-code` treats to *str* function differently, when you want to provide _long and formatted code_, probably it won't fit into your editor nicely so you can separate into small chunk of strings like this:
+
+[source, clojure]
+----
+(initial-code (str "\n\n(println \"Scalars: \\n\")\n\n\n"
+                   "(println \"Type of 1 is: \" (type 1) \"\\n\")\n\n\n"
+                   "(println \"Type of 1.2 is: \" (type 1.2) \"\\n\")\n\n\n"
+                   "(println \"Type of 1N is: \" (type 1N) \"\\n\")\n\n\n"
+                   "(println \"Type of 'my-s is: \" (type 'my-s) \"\\n\")"))
+----
+
+NOTE: If you provide namespace in initial-code then you don't have to declare ns in subject, for example:
+
+[source, clojure]
+----
+(subject
+  'subj-initial-code-ns-ex
+  "Let's see some initial code"
+
+  (learn
+    (text
+      (p "Check code in the editor")))
+  (instruction 'ins
+               (run-pre-tests? true)
+               ;; ns will be fetched from initial-code
+               (initial-code "\n(ns clj.core\n  (:require [clojure.string :as str]))\n\n(defn your-fn\n  []\n  )")
+               (rule :no-rule? true)
+
+               (sub-instruction 'sub-ins
+                                (text
+                                  (p "Please click the Run button"))
+                                (testing
+                                  ;;mock true for demo
+                                  (is (true? true))))))
+----
+
+=== rule
+`rule` allows us to have some control over user's code and it has a couple of powerful options such as `:restricted-fns`, `:required-fns` and `:only-use-one-fn?`.
+
+When you want to restrict couple of functions/symbols you need to use `:restricted-fns`
+
+[source, clojure]
+----
+;; users can't use last and reduce functions in their code
+(rule :restricted-fns '[last reduce])
+----
+
+There will be some times you might want users to provide only *one function(form)* and you need to use `:only-use-one-fn?`
+
+[source, clojure]
+----
+;; users can only provide one function/form they can not write multiple functions in their editor, if they do they will get an exception
+(rule :only-use-one-fn? true)
+----
+
+Also you might want users to use *specific functions* to construct their code and you will need to use `:required-fns`
+
+[source, clojure]
+----
+;;also you have to use :only-use-one-fn? with :required-fns, the reason is we want to control those functions used in a function.
+(rule :required-fns '[reduce]
+      :only-use-one-fn? true)
+----
+
+=== is
+
+`is` components will be defined within a `testing` component, basically `is` components are test assertions and form after is returns either true(test passes) or false(test fails):
+
+[source, clojure]
+----
+(is (= (my-last [1 2 3 4 5]) 5))
+;;returns true
+
+(is (= (my-last [1 2 3 4 5]) 4))
+;;  Error: (= 5 4) -> This assertion does not return true!
+
+You can override error message if you want to:
+(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!")
+;;  Error: (= 5 4) -> Overwritten error message, it fails!
+
+
+;;There are couple of error messages types such as :none, :simple(default one) and :advanced
+
+(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :none)
+;;  Error: Overwritten error message, it fails!
+
+(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :simple)
+;;  Error: (= 5 4) -> Overwritten error message, it fails!
+
+(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :advanced)
+;;  Error: (= (my-last [1 2 3 4 5]) 4) => (= 5 4) -> Overwritten error message, it fails!
+
+(is (= (my-last [1 2 3 4 5]) 4) :default :advanced)
+;;  Error: (= (my-last [1 2 3 4 5]) 4) => (= 5 4) -> This assertion does not return true!
+----
+
+IMPORTANT: Also is component treats macros differently when it comes to error message representation(:advanced error message type), if you want to use a macro in is component, check error messages before releasing it, the reason is sometimes error messages might not make sense(especially having nested and long codes).
+
+
+=== text
+
+`text` can take 2 different _sub text components_ called `p(paragraph)` and `code`.You can define as many `p` or `code` components as you want within text:
+
+[source, clojure]
+----
+(text
+  (p "Clojure is a" (hi "functional programming") "language."
+     "It runs on " (italic "JVM") " and " (bold "other platforms(JavaScript, CLR)")
+     "Check Clojure's Official site: " (link "Clojure Site" "https://clojure.org"))
+
+  (p "Here is the Clojure code:")
+  (code (println "Hello, world"))
+
+  (p "Also you can Clojure code like this:")
+  (code "(defn my-fn\n          [x]\n          (println x))")
+
+  (p "You wanna show some " (hi "Ruby") " code?")
+  (code "ruby" "puts 'Hello, world!'")
+
+  (p "Or some " (hi "python") "?")
+  (code "python" "def printme( str ):\n   print str\n   return;"))
+----
+
+`code` supports 9+ programming languages
+|===
+| clojure (default)
+| ruby
+| clike (c/c++, java etc.)
+| haskell
+| javascript
+| python
+| scheme
+| commonlisp
+| erlang
+|===
+
+Also `code` treats *str* function in a same way with `initial-code` so you can split your long formatted codes into smaller strings.
+
+== Ordering
+
+Ordering your component is an important thing to pay attention, I'll show you how to not make critical mistakes.
+
+Let's assume you have course structure like this:
+
+[source, clojure]
+----
+(course my-manifest
+        (chapter 'ch-intro ...)
+        (chapter 'ch-examples ...))
+----
+
+And you want to re-order your chapters(you can do for all components as well) take a look at the following code(which is totally okay):
+
+[source, clojure]
+----
+;;re-ordered, that's fine
+(course my-manifest
+        (chapter 'ch-examples ...)
+        (chapter 'ch-intro ...))
+----
+
+But let's say you wanted to change name identifier of ch-intro to ch-basics and have something like this:
+
+[source, clojure]
+----
+(course my-manifest
+        (chapter 'ch-examples ...)
+        (chapter 'ch-basics ...))
+----
+
+IMPORTANT: This is the critical part if you change name identifier of any component that(ch-basics) component will be deactivated(new component will be created ch-basics) in course and if you have existing course and some users enrolled that course they won't be able to see that chapter so the thing is you can change name identifiers of components that's fine but before doing that take those outcomes into account but if you are just in development stage that's fine.
+
+NOTE: Like we said if you change name identifier that component will be deactivated(not deleted) so you can re-change name identifier to old name it will show up again(no data loss).
+
+== Predefined Functions
+
+Predefined functions are built-in functions of Clojurecademy that we use to validate user's code in `is` components.
+
+Let's use predefined functions on following code that provided by a user:
+
+[source, clojure]
+----
+(ns clojure-intro)
+
+(println "Hello, world")
+
+(defn my-add
+  [& args]
+  (apply + args))
+
+(- 3 2 1)
+
+(defn my-fn
+  []
+  (do
+    (println "I'm Here!")))
+
+(defn throw-runtime-ex
+  []
+  (throw (RuntimeException. "Damn!")))
+
+(+ 1 2 3)
+----
+
+Usage:
+
+[source, clojure]
+----
+(all-forms) ;returns user's code as a data structure except ns form
+(all-forms true) ;returns user's code as a data structure including ns form
+
+(is (= '(println "Hello, world") (first (all-forms))))
+
+(form-used? <form>) ;checks that form used at top level in code
+(is (form-used? (println "Hello, world")))
+
+(form-used-nes? <form>) ;checks that form used anywhere(nested structure) in code
+(is (form-used-nes? (println "I'm Here!")))
+
+(ns-form) ;returns ns form of the code
+(is (= 'clojure-intro (second (ns-form))))
+
+(first-form) ;returns first form of the code(ns excluded)
+(is (= '(println "Hello, world") (first-form)))
+
+(second-form) ;returns second form of the code(ns excluded)
+(is (= '(defn my-add [& args] (apply + args)) (second-form)))
+
+(nth-form) ;returns nth form of the code(ns excluded)
+(is (= '(- 3 2 1) (nth-form 2)))
+
+(eval-ds <form>) ;evaluates the given form and returns the result
+(is (= 6 (eval-ds (last (all-forms)))))
+
+(throws? ...) ;checks the given code that throws an exception or not
+(is (throws? RuntimeException (throw-runtime-ex)))
+----
+
+== Helper Functions
+
+As an author, you can define your own functions to validate user's input and it reduces the duplicate code for validation.
+
+First of all, let's create *helper-fns.clj* in the same directory with *core.clj* and write the following code:
+
+[source, clojure]
+----
+;;checks that str/join function declared in user'scode
+(defn str-join-used?
+  [codes]
+  ((complement not-any?) (fn [code]
+                           (and (= 'str/join (first code))
+                                (vector? (second code))
+                                (= 2 (count (second code)))))
+    (filter list? codes)))
+----
+
+Also, you need to specify your helper namespace in *project.clj* to be able to use it:
+
+`:helper-fns-ns clj.helper-fns`
+
+[source, clojure]
+----
+;now you can use your helper fn in your is component
+(is (str-join-used? (all-forms)))
+----
+
+== Plugin Commands
+
+There are a couple of commands that you can benefit from when writing a course.
+
+`lein clojurecademy [options...]`
+
+|===
+|test | validates course
+|test [debug or -d] |shows stages while validating course
+|test [debug or -d] [advanced or -a] |shows stages and creates all data structure while validating course
+|autotest | detects file changes and runs test, it's infinite process
+|autotest [debug or -d] |like autotest, shows stages
+|autotest [debug or -d] [advanced or -a] |like autotest, shows stages and creates all data structure
+|deploy |deploys course to Clojurecademy site
+|blacklist |shows blacklisted namespaces, packages, symbols and objects
+|blacklist [namespace or -n] |shows blacklisted namespaces only
+|blacklist [package or -p] |shows blacklisted packages only
+|blacklist [symbol or -s] |shows blacklisted symbols only
+|blacklist [object or -o] |shows blacklisted objects only
+|course |shows routes and defcoursetests of course
+|course [route or -r] |shows routes of course only
+|course [test or -t] |shows defcoursetests of course only
+|===
+
+
+== Deployment
+
+When you are done with your course it’s time to deploy to Clojurecademy and the procedure is very easy, only thing you need to do is that type the following command:
+
+`lein clojurecademy deploy`
+
+Then you will be asked to provide your Clojurecademy username/email and password, after providing your credentials course going to be deployed/committed to the site.
+
+NOTE: If you don't want to provide your credentials every time you deploy it you can add your credentials to your *~/.lein/profiles.clj* file:
+
+[source, clojure]
+----
+:clojurecademy {:username-or-email "your-username-or-email"
+                :password "your-password"}
+----
+
+Now you deployed your course to Clojurecademy but your course won't be released until you release it in the UI so you need to go to Clojurecademy site and follow these steps: `Log In -> Learn -> Created Courses -> Your Course -> Click Release Button -> Release It!`
+
+NOTE: Now users will be able to see your course, if course existed before they will get new changes.
+
+IMPORTANT: When you commit(deploy) your course you don't have to Release It you will always get the latest version of your course because you are the author so please do release when your course is ready for users.
+
+== Source Code
+
+_Sample Course_ is open source and can be found on link:https://github.com/clojurecademy/sample-course[GitHub].
+
+
+== License
+
+[source,text]
+----
+Copyright 2017 Ertuğrul Çetin
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+----
