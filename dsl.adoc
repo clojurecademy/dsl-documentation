@@ -39,11 +39,11 @@ Let's create new lein project
 
 The easiest way to use DSL in a Clojure project is by including it as a dependency in your *_project.clj_*:
 
-`[clojurecademy/dsl "0.1.0"]`
+`[clojurecademy "0.1.0"]`
 
 Also, you need to add lein plugin for DSL as well:
 
-`[clojurecademy/lein-clojurecademy "0.1.0"]`
+`[lein-clojurecademy "0.1.0"]`
 
 == Components
 
