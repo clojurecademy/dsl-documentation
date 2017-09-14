@@ -441,7 +441,7 @@ IMPORTANT: Also is component treats macros differently when it comes to error me
   (p "Here is the Clojure code:")
   (code (println "Hello, world"))
 
-  (p "Also you can Clojure code like this:")
+  (p "Also you can write Clojure code like this:")
   (code "(defn my-fn\n          [x]\n          (println x))")
 
   (p "You wanna show some " (hi "Ruby") " code?")
