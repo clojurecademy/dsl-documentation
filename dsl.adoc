@@ -56,7 +56,7 @@ image::img-2.png[]
 
 Every Clojurecademy course needs a manifest which specifies main characteristics of a course such as a name, descriptions and so on.
 
-Let's open sample-course.clj file and define our manifest.
+Let's open core.clj file and define our manifest.
 
 [source, clojure]
 ----
