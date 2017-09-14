@@ -43,7 +43,7 @@ The easiest way to use DSL in a Clojure project is by including it as a dependen
 
 Also, you need to add lein plugin for DSL as well:
 
-`[lein-clojurecademy "0.1.0"]`
+`[lein-clojurecademy "0.1.1"]`
 
 == Components
 
