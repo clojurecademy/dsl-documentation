@@ -310,8 +310,8 @@ And it's `defcourtests` would be like this:
                  (apply - args)))
 ----
 
-=== run-pre-test?
-`run-pre-test?` can have either *true* or *false* as a parameter, if it is true sub instructions before current sub instruction going to be checked(_e.g. before executing 3. instruction 1. and 2. instructions going to be executed to check that they pass or not_), if false current sub instruction will be checked only.
+=== run-pre-tests?
+`run-pre-tests?` can have either *true* or *false* as a parameter, if it is true sub instructions before current sub instruction going to be checked(_e.g. before executing 3. instruction 1. and 2. instructions going to be executed to check that they pass or not_), if false current sub instruction will be checked only.
 
 === initial-code
 
