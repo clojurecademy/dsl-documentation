@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
-<meta name="author" content="Ertuğrul Çetin - 1.0.0">
-<title>Clojurecademy DSL Documentation</title>
-<style>
+    <meta charset="UTF-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Asciidoctor 1.5.6.1">
+    <meta name="author" content="Ertuğrul Çetin - 1.0.0">
+    <title>Clojurecademy DSL Documentation</title>
+    <style>
 .listingblock .pygments .hll { background-color: #ffffcc }
 .listingblock .pygments, .listingblock .pygments code { background: #f0f0f0; }
 .listingblock .pygments .tok-c { color: #60a0b0; font-style: italic } /* Comment */
@@ -77,10 +78,12 @@
 .listingblock .pygments .tok-vi { color: #bb60d5 } /* Name.Variable.Instance */
 .listingblock .pygments .tok-vm { color: #bb60d5 } /* Name.Variable.Magic */
 .listingblock .pygments .tok-il { color: #40a070 } /* Literal.Number.Integer.Long */
-</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Liberation+Mono:400|Roboto+Slab:400,700"/>
-<link rel="stylesheet" href="https://www.niwi.nz/_assets/asciidoctor-styles/simple-red-titles/stylesheet.css"/>
-<script>
+
+    </style>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Liberation+Mono:400|Roboto+Slab:400,700"/>
+    <link rel="stylesheet" href="https://www.niwi.nz/_assets/asciidoctor-styles/simple-red-titles/stylesheet.css"/>
+    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -89,233 +92,267 @@
   ga('create', 'UA-103585852-2', 'auto');
   ga('send', 'pageview');
 
-</script>
+
+    </script>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Clojurecademy DSL Documentation</h1>
-<div class="details">
-<span id="author" class="author">Ertuğrul Çetin - 1.0.0</span><br>
-</div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#rationale">Rationale</a></li>
-<li><a href="#requirements">Requirements</a></li>
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#components">Components</a>
-<ul class="sectlevel2">
-<li><a href="#manifest">manifest</a></li>
-<li><a href="#course">course</a></li>
-<li><a href="#run-pre-test">run-pre-tests?</a></li>
-<li><a href="#initial-code">initial-code</a></li>
-<li><a href="#rule">rule</a></li>
-<li><a href="#is">is</a></li>
-<li><a href="#text">text</a></li>
-</ul>
-</li>
-<li><a href="#ordering">Ordering</a></li>
-<li><a href="#predefined-functions">Predefined Functions</a></li>
-<li><a href="#helper-functions">Helper Functions</a></li>
-<li><a href="#plugin-commands">Plugin Commands</a></li>
-<li><a href="#deployment">Deployment</a></li>
-<li><a href="#source-code">Source Code</a></li>
-<li><a href="#license">License</a></li>
-</ul>
-</div>
+    <h1>Clojurecademy DSL Documentation</h1>
+    <div class="details">
+        <span id="author" class="author">Ertuğrul Çetin - 1.0.0</span><br>
+    </div>
+    <div id="toc" class="toc2">
+        <div id="toctitle">Table of Contents</div>
+        <ul class="sectlevel1">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#rationale">Rationale</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#components">Components</a>
+                <ul class="sectlevel2">
+                    <li><a href="#manifest">manifest</a></li>
+                    <li><a href="#course">course</a></li>
+                    <li><a href="#run-pre-test">run-pre-tests?</a></li>
+                    <li><a href="#initial-code">initial-code</a></li>
+                    <li><a href="#rule">rule</a></li>
+                    <li><a href="#is">is</a></li>
+                    <li><a href="#text">text</a></li>
+                </ul>
+            </li>
+            <li><a href="#ordering">Ordering</a></li>
+            <li><a href="#predefined-functions">Predefined Functions</a></li>
+            <li><a href="#helper-functions">Helper Functions</a></li>
+            <li><a href="#plugin-commands">Plugin Commands</a></li>
+            <li><a href="#deployment">Deployment</a></li>
+            <li><a href="#source-code">Source Code</a></li>
+            <li><a href="#license">License</a></li>
+        </ul>
+    </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>DSL for creating courses on Clojurecademy</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="rationale"><a class="link" href="#rationale">Rationale</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The main motivations for creating Clojurecademy are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>I want Clojure community to grow and try to help with this project to make it happen.</p>
-</li>
-<li>
-<p>Making Clojure adoption as much easy as possible for new comers.(without initial setup etc.)</p>
-</li>
-<li>
-<p>Making possible to teach anything related to programming in Clojure(e.g. Algorithms &amp; Data Structures to Data Science).</p>
-</li>
-<li>
-<p>Having good Clojure resources in any field by contributing Clojurecademy&#8217;s courses together.</p>
-</li>
-<li>
-<p>Giving back to the community.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="requirements"><a class="link" href="#requirements">Requirements</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Clojure 1.8</p>
-</li>
-<li>
-<p>Java 8</p>
-</li>
-<li>
-<p>Leiningen 2.7.1+</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="getting-started"><a class="link" href="#getting-started">Getting Started</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Let&#8217;s create new lein project</p>
-</div>
-<div class="paragraph">
-<p><code>lein new app sample-course</code></p>
-</div>
-<div class="paragraph">
-<p>The easiest way to use DSL in a Clojure project is by including it as a dependency in your <strong><em>project.clj</em></strong>:</p>
-</div>
-<div class="paragraph">
-<p><code>[clojurecademy "0.1.0"]</code></p>
-</div>
-<div class="paragraph">
-<p>Also, you need to add lein plugin for DSL as well:</p>
-</div>
-<div class="paragraph">
-<p><code>[lein-clojurecademy "0.1.55"]</code></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="components"><a class="link" href="#components">Components</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There are several components to create a course such as <code>manifest</code>, <code>course</code>, <code>chapter</code>, <code>sub-chapter</code>, <code>subject</code>, <code>instruction</code>, <code>sub-instruction</code> and so on, now we are going to examine those components in detail.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img-1.png" alt="img 1">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img-2.png" alt="img 2">
-</div>
-</div>
-<div class="sect2">
-<h3 id="manifest"><a class="link" href="#manifest">manifest</a></h3>
-<div class="paragraph">
-<p>Every Clojurecademy course needs a manifest which specifies main characteristics of a course such as a name, descriptions and so on.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s open core.clj file and define our manifest.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-kd">ns </span><span class="tok-nv">clj.core</span>
-  <span class="tok-p">(</span><span class="tok-ss">:require</span> <span class="tok-p">[</span><span class="tok-nv">clojurecademy.dsl.core</span> <span class="tok-ss">:refer</span> <span class="tok-ss">:all</span><span class="tok-p">]))</span>
+    <div class="sect1">
+        <h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>DSL for creating courses on Clojurecademy</p>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="rationale"><a class="link" href="#rationale">Rationale</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>The main motivations for creating Clojurecademy are:</p>
+            </div>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>I want Clojure community to grow and try to help with this project to make it happen.</p>
+                    </li>
+                    <li>
+                        <p>Making Clojure adoption as much easy as possible for new comers.(without initial setup etc.)</p>
+                    </li>
+                    <li>
+                        <p>Making possible to teach anything related to programming in Clojure(e.g. Algorithms &amp; Data Structures to Data
+                            Science).</p>
+                    </li>
+                    <li>
+                        <p>Having good Clojure resources in any field by contributing Clojurecademy&#8217;s courses together.</p>
+                    </li>
+                    <li>
+                        <p>Giving back to the community.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="requirements"><a class="link" href="#requirements">Requirements</a></h2>
+        <div class="sectionbody">
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p>Clojure 1.8</p>
+                    </li>
+                    <li>
+                        <p>Java 8</p>
+                    </li>
+                    <li>
+                        <p>Leiningen 2.7.1+</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="getting-started"><a class="link" href="#getting-started">Getting Started</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>Let&#8217;s create new lein project</p>
+            </div>
+            <div class="paragraph">
+                <p><code>lein new app sample-course</code></p>
+            </div>
+            <div class="paragraph">
+                <p>The easiest way to use DSL in a Clojure project is by including it as a dependency in your
+                    <strong><em>project.clj</em></strong>:</p>
+            </div>
+            <div class="paragraph">
+                <p><code>[clojurecademy "0.1.0"]</code></p>
+            </div>
+            <div class="paragraph">
+                <p>Also, you need to add lein plugin for DSL as well:</p>
+            </div>
+            <div class="paragraph">
+                <p><code>[lein-clojurecademy "0.1.55"]</code></p>
+            </div>
+            <div class="paragraph">
+                <p>Also you need to create <strong><em>~/.java.policy</em></strong> file in your home directory and add the following code:
+                </p>
+            </div>
+            <div class="paragraph">
+                <p><code>grant {
+                    permission java.security.AllPermission;
+                    };</code></p>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="components"><a class="link" href="#components">Components</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>There are several components to create a course such as <code>manifest</code>, <code>course</code>, <code>chapter</code>,
+                    <code>sub-chapter</code>, <code>subject</code>, <code>instruction</code>, <code>sub-instruction</code> and so on, now we
+                    are going to examine those components in detail.</p>
+            </div>
+            <div class="imageblock">
+                <div class="content">
+                    <img src="img-1.png" alt="img 1">
+                </div>
+            </div>
+            <div class="imageblock">
+                <div class="content">
+                    <img src="img-2.png" alt="img 2">
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="manifest"><a class="link" href="#manifest">manifest</a></h3>
+                <div class="paragraph">
+                    <p>Every Clojurecademy course needs a manifest which specifies main characteristics of a course such as a name,
+                        descriptions and so on.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Let&#8217;s open core.clj file and define our manifest.</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-kd">ns </span><span
+        class="tok-nv">clj.core</span>
+  <span class="tok-p">(</span><span class="tok-ss">:require</span> <span class="tok-p">[</span><span
+            class="tok-nv">clojurecademy.dsl.core</span> <span class="tok-ss">:refer</span> <span class="tok-ss">:all</span><span
+            class="tok-p">]))</span>
 
 <span class="tok-p">(</span><span class="tok-k">def </span><span class="tok-nv">my-manifest</span>
   <span class="tok-p">(</span><span class="tok-nf">manifest</span> <span class="tok-ss">:title</span> <span class="tok-s">&quot;Sample Course&quot;</span>
             <span class="tok-ss">:report-bug-email-or-link</span> <span class="tok-s">&quot;https://github.com/clojurecademy/sample-course/issues&quot;</span>
             <span class="tok-ss">:name</span> <span class="tok-ss">&#39;sample-course</span>
             <span class="tok-ss">:skip?</span> <span class="tok-nv">true</span>
-            <span class="tok-ss">:short-description</span> <span class="tok-s">&quot;Sample Course Project for Clojurecademy DSL&quot;</span>
+            <span class="tok-ss">:short-description</span> <span
+            class="tok-s">&quot;Sample Course Project for Clojurecademy DSL&quot;</span>
             <span class="tok-ss">:long-description</span> <span class="tok-s">&quot;It&#39;s designed to teach \&quot;How to make a course on Clojurecademy?\&quot;&quot;</span>
-            <span class="tok-ss">:who-is-this-course-for</span> <span class="tok-ss">:no-programming-experience</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Title of a course.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:report-bug-email-or-link</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Email address or URL that related to the course(e.g. GitHub issue page URL) so users of your course can submit a bug report to you.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier for your project if you change it you will be creating new course so keep it that way unless you want same course couple of times.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:skip?</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When it&#8217;s false that means users can&#8217;t jump into chapters randomly they need to go step by step from scratch, if it&#8217;s true they can jump into any chapter randomly and skip it whenever they want.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:short-description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Short description for a course which is limited to 125 characters.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:long-description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Long description for a course which is limited to 600 characters.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:who-is-this-course-for</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defining who should enroll this course such as people with no programming experience or people with some Clojure experience and so on.There are 3 predefined keywords(that turn into some strings).</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>3 predefined options of <code>:who-is-this-course-for</code></p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Keyword</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Equivalent String</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:clojure-experience</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"This course requires some Clojure experience."</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:programming-experience</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"This course requires some programming experience, Clojure experience is NOT required."</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:no-programming-experience</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"This course does not require any programming experience, it&#8217;s for total beginners to programming."</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">*or you can override it with a string, such as:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"This course is for &#8230;&#8203;&#8230;&#8203;.."</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="course"><a class="link" href="#course">course</a></h3>
-<div class="paragraph">
-<p>Now we are going to construct a course, let&#8217;s define our course like this(don&#8217;t worry we will talk about every component in detail later on):</p>
-</div>
-<div class="listingblock">
-<div class="content">
+            <span class="tok-ss">:who-is-this-course-for</span> <span class="tok-ss">:no-programming-experience</span><span
+            class="tok-p">))</span></code></pre>
+                    </div>
+                </div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 50%;">
+                        <col style="width: 50%;">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:title</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Title of a course.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:report-bug-email-or-link</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Email address or URL that related to the
+                            course(e.g. GitHub issue page URL) so users of your course can submit a bug report to you.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:name</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier for your project if you change
+                            it you will be creating new course so keep it that way unless you want same course couple of times.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:skip?</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">When it&#8217;s false that means users can&#8217;t
+                            jump into chapters randomly they need to go step by step from scratch, if it&#8217;s true they can jump into any
+                            chapter randomly and skip it whenever they want.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:short-description</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Short description for a course which is limited
+                            to 125 characters.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:long-description</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Long description for a course which is limited
+                            to 600 characters.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:who-is-this-course-for</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Defining who should enroll this course such as
+                            people with no programming experience or people with some Clojure experience and so on.There are 3 predefined
+                            keywords(that turn into some strings).</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p>3 predefined options of <code>:who-is-this-course-for</code></p>
+                </div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 50%;">
+                        <col style="width: 50%;">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Keyword</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">Equivalent String</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:clojure-experience</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">"This course requires some Clojure
+                            experience."</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:programming-experience</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">"This course requires some programming
+                            experience, Clojure experience is NOT required."</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">:no-programming-experience</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">"This course does not require any programming
+                            experience, it&#8217;s for total beginners to programming."</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">*or you can override it with a string, such
+                            as:</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">"This course is for &#8230;&#8203;&#8230;&#8203;.."</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sect2">
+                <h3 id="course"><a class="link" href="#course">course</a></h3>
+                <div class="paragraph">
+                    <p>Now we are going to construct a course, let&#8217;s define our course like this(don&#8217;t worry we will talk about
+                        every component in detail later on):</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;;We name it like course-map because under the hood DSL creates huge map data structure basically</span>
 <span class="tok-c1">;;all components made from Clojure maps</span>
 <span class="tok-p">(</span><span class="tok-k">def </span><span class="tok-nv">course-map</span>
@@ -333,72 +370,78 @@
 
                        <span class="tok-p">(</span><span class="tok-nf">learn</span> <span class="tok-c1">;learn part for subject</span>
                          <span class="tok-p">(</span><span class="tok-nf">text</span>
-                           <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Clojure is a functional programming that runs on JVM.&quot;</span><span class="tok-p">))))))))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>We created our simple course without any instructions(we will talk about it) so what do we have up there?:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Course takes one manifest and multiple chapters as parameters.</p>
-</li>
-<li>
-<p>Chapter takes name identifier, title and multiple sub chapters as parameters.</p>
-</li>
-<li>
-<p>Sub Chapter takes name identifier, title and multiple subjects as parameters.</p>
-</li>
-<li>
-<p>Subject takes name identifier, title and one instruction(and optional other components as well).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#160;<br></p>
-</div>
-<div class="paragraph">
-<p>We need to make sure that our course is <strong>valid</strong> and going to run this command:</p>
-</div>
-<div class="paragraph">
-<p><code>lein clojurecademy test</code></p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-Got the following <em>error</em>:</p>
-</div>
-<div class="paragraph">
-<p>Missing <code>:clojurecademy</code> option in <strong>project.clj</strong>. You need to have a line in your <strong>project.clj</strong> file that looks like:
-  <code>:clojurecademy {:course-map your.ns/course-map}</code></p>
-</div>
-<div class="paragraph">
-<p>That output means we need to define our <em>course-map</em> in project.clj file so let&#8217;s open our project.clj file and add this line:</p>
-</div>
-<div class="paragraph">
-<p><code>:clojurecademy {:course-map clj.core/course-map}</code></p>
-</div>
-<div class="paragraph">
-<p>Also we have to add this option as well:</p>
-</div>
-<div class="paragraph">
-<p><code>:eval-in :leiningen</code></p>
-</div>
-<div class="paragraph">
-<p>Then try again that <code>lein clojurecademy test</code>, you should get the following output:</p>
-</div>
-<div class="paragraph">
-<p><code>Map is valid. There is no test var defined.Please add <em>defcoursetest</em> for testing.</code></p>
-</div>
-<div class="paragraph">
-<p>Now we get this success output which means our course is valid and we need to have at least one subject which has <strong>instruction</strong> then we will be able to deploy to Clojurecademy.</p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-Now we are going to extend our course with an instruction so we will be able to expect users to provide some input and validate their input that it&#8217;s valid or not.Here is the extended version that one subject(<code>subj-hello-world</code>) added to sub chapter called <code>sub-ch-basics</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
+                           <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Clojure is a functional programming that runs on JVM.&quot;</span><span
+            class="tok-p">))))))))</span></code></pre>
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p>We created our simple course without any instructions(we will talk about it) so what do we have up there?:</p>
+                </div>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Course takes one manifest and multiple chapters as parameters.</p>
+                        </li>
+                        <li>
+                            <p>Chapter takes name identifier, title and multiple sub chapters as parameters.</p>
+                        </li>
+                        <li>
+                            <p>Sub Chapter takes name identifier, title and multiple subjects as parameters.</p>
+                        </li>
+                        <li>
+                            <p>Subject takes name identifier, title and one instruction(and optional other components as well).</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br></p>
+                </div>
+                <div class="paragraph">
+                    <p>We need to make sure that our course is <strong>valid</strong> and going to run this command:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>lein clojurecademy test</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        Got the following <em>error</em>:</p>
+                </div>
+                <div class="paragraph">
+                    <p>Missing <code>:clojurecademy</code> option in <strong>project.clj</strong>. You need to have a line in your <strong>project.clj</strong>
+                        file that looks like:
+                        <code>:clojurecademy {:course-map your.ns/course-map}</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>That output means we need to define our <em>course-map</em> in project.clj file so let&#8217;s open our project.clj
+                        file and add this line:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>:clojurecademy {:course-map clj.core/course-map}</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Also we have to add this option as well:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>:eval-in :leiningen</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Then try again that <code>lein clojurecademy test</code>, you should get the following output:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>Map is valid. There is no test var defined.Please add <em>defcoursetest</em> for testing.</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Now we get this success output which means our course is valid and we need to have at least one subject which has
+                        <strong>instruction</strong> then we will be able to deploy to Clojurecademy.</p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        Now we are going to extend our course with an instruction so we will be able to expect users to provide some input
+                        and validate their input that it&#8217;s valid or not.Here is the extended version that one subject(<code>subj-hello-world</code>)
+                        added to sub chapter called <code>sub-ch-basics</code>:</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">sub-chapter</span>
   <span class="tok-ss">&#39;sub-ch-basics</span>
   <span class="tok-s">&quot;Basics&quot;</span>
@@ -409,7 +452,8 @@ Now we are going to extend our course with an instruction so we will be able to 
 
     <span class="tok-p">(</span><span class="tok-nf">learn</span>
       <span class="tok-p">(</span><span class="tok-nf">text</span>
-        <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Clojure is a functional programming that runs on JVM.&quot;</span><span class="tok-p">))))</span>
+        <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Clojure is a functional programming that runs on JVM.&quot;</span><span
+            class="tok-p">))))</span>
 
   <span class="tok-p">(</span><span class="tok-nf">subject</span>
     <span class="tok-ss">&#39;subj-hello-world</span>
@@ -417,455 +461,602 @@ Now we are going to extend our course with an instruction so we will be able to 
 
     <span class="tok-p">(</span><span class="tok-nf">learn</span>
       <span class="tok-p">(</span><span class="tok-nf">text</span>
-        <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Now we are going to use Clojure&#39;s print functionality to see some output.Please follow the instructions&quot;</span><span class="tok-p">)))</span>
-    <span class="tok-p">(</span><span class="tok-nf">instruction</span> <span class="tok-ss">&#39;ins-clojure-helloworld</span> <span class="tok-c1">;name identifier</span>
-                 <span class="tok-p">(</span><span class="tok-nf">run-pre-tests?</span> <span class="tok-nv">false</span><span class="tok-p">)</span>
-                 <span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-ss">:none</span><span class="tok-p">)</span>
-                 <span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:no-rule?</span> <span class="tok-nv">true</span><span class="tok-p">)</span>
+        <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Now we are going to use Clojure&#39;s print functionality to see some output.Please follow the instructions&quot;</span><span
+            class="tok-p">)))</span>
+    <span class="tok-p">(</span><span class="tok-nf">instruction</span> <span class="tok-ss">&#39;ins-clojure-helloworld</span> <span
+            class="tok-c1">;name identifier</span>
+                 <span class="tok-p">(</span><span class="tok-nf">run-pre-tests?</span> <span class="tok-nv">false</span><span
+            class="tok-p">)</span>
+                 <span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-ss">:none</span><span
+            class="tok-p">)</span>
+                 <span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:no-rule?</span> <span class="tok-nv">true</span><span
+            class="tok-p">)</span>
 
-                 <span class="tok-p">(</span><span class="tok-nf">sub-instruction</span> <span class="tok-ss">&#39;sub-ins-hello-world</span> <span class="tok-c1">;name identifier</span>
+                 <span class="tok-p">(</span><span class="tok-nf">sub-instruction</span> <span
+            class="tok-ss">&#39;sub-ins-hello-world</span> <span class="tok-c1">;name identifier</span>
                                   <span class="tok-p">(</span><span class="tok-nf">text</span>
                                     <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Please print \&quot;Hello, World\&quot; to console &quot;</span>
-                                       <span class="tok-s">&quot;then click the Run button to see the result&quot;</span><span class="tok-p">))</span>
+                                       <span class="tok-s">&quot;then click the Run button to see the result&quot;</span><span
+            class="tok-p">))</span>
                                   <span class="tok-p">(</span><span class="tok-nf">testing</span>
-                                    <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">form-used?</span> <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, World&quot;</span><span class="tok-p">))))))</span>
+                                    <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nf">form-used?</span> <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, World&quot;</span><span
+            class="tok-p">))))))</span>
     <span class="tok-ss">&#39;hello-world</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As you can see in this instruction we are asking users to write <code>(println "Hello, World")</code> and click <strong>Run</strong> button, so we can validate their input. We are going to talk about components that used in here(<code>run-pre-tests?</code>, <code>initial-code</code>, etc.) in the following sections.</p>
-</div>
-<div class="paragraph">
-<p>Instruction can have multiple <code>sub-instruction</code> components and we have one here, every <code>sub-instruction</code> can have one <code>text</code>(for telling the user what to do) and one <code>testing</code> component, since we can have multiple <code>is</code> components within testing it’s easy to write many <code>is</code> <em>assertions</em> to validate given input.</p>
-</div>
-<div class="paragraph">
-<p>In the example <code>is</code> component takes a form which is supposed to return either <em>true</em> or <em>false</em> if it is true test passes if not it fails. <code>form-used?</code> is a predefined function in the platform basically it checks the given form that exists in the user&#8217;s code. You can check <a href="#predefined-functions">Predefined Functions</a>.</p>
-</div>
-<div class="paragraph">
-<p>At the bottom <code>'hello-world</code> indicates namespace of our subject.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s run our command to be sure that we are on the right track:</p>
-</div>
-<div class="paragraph">
-<p><code>lein clojurecademy test</code></p>
-</div>
-<div class="paragraph">
-<p>Here what we get(again):</p>
-</div>
-<div class="paragraph">
-<p><code>Map is valid. There is no test var defined.Please add <em>defcoursetest</em> for testing.</code></p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s focus on this message: <code>There is no test var defined.Please add <em>defcoursetest</em> for testing.</code> which means we need to write a test(not the test we know of) that validates our instruction so we will be sure that this instruction has a <strong>working solution</strong>, the thing is we are going to write user&#8217;s code(code that users provide to pass instruction).</p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-Before writing test we need to add required ns:</p>
-</div>
-<div class="paragraph">
-<p><code>[clojurecademy.dsl.test :refer [defcoursetest]]</code></p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-Now, please add following code under the <em>course-map</em>, then run <code>lein clojurecademy test</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">defcoursetest</span> <span class="tok-nv">my-test</span>
-  <span class="tok-p">[</span><span class="tok-nv">ch-intro</span> <span class="tok-nv">sub-ch-basics</span> <span class="tok-nv">subj-hello-world</span> <span class="tok-nv">ins-clojure-helloworld</span> <span class="tok-nv">sub-ins-hello-world</span><span class="tok-p">]</span>
-  <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, World&quot;</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here is the output which indicates everything is fine and you are ready to deploy your course to <em>Clojurecademy</em>:</p>
-</div>
-<div class="paragraph">
-<p><code>Map is valid.&#160;<br>
-Hello, World&#160;<br>
-1 routes passed.</code></p>
-</div>
-<div class="paragraph">
-<p>Every <code>sub-instruction</code> needs <code>defcoursetest</code> and you can define your test where ever you like in clj files. Let&#8217;s examine <code>defcoursetest</code> in depth:</p>
-</div>
-<div class="paragraph">
-<p><code>my-test</code> is name identifier for <code>defcoursetest</code> which should be <strong>unique</strong> it works like <strong>def</strong> in Clojure.</p>
-</div>
-<div class="paragraph">
-<p><code>[ch-intro sub-ch-basics subj-hello-world ins-clojure-helloworld sub-ins-hello-world]</code> indicates route for this sub instruction. From <code>chapter</code> to <code>sub-instruction</code> <em>(using name identifiers)</em></p>
-</div>
-<div class="paragraph">
-<p><code>(println "Hello, World")</code> it&#8217;s assumed that users code <em>(code that provided by user)</em></p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-If you want to see your course on Clojurecademy immediately you can check here(<a href="#deployment">Deployment</a>), you can regularly deploy your course as you add/change something in your course and see it visually all the time.</p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-We said that instruction can have multiple <code>sub-instruction</code> components so let&#8217;s add new subject called <code>subj-math-fns</code> under the <code>subj-hello-world</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p>As you can see in this instruction we are asking users to write <code>(println "Hello, World")</code> and click
+                        <strong>Run</strong> button, so we can validate their input. We are going to talk about components that used in
+                        here(<code>run-pre-tests?</code>, <code>initial-code</code>, etc.) in the following sections.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Instruction can have multiple <code>sub-instruction</code> components and we have one here, every <code>sub-instruction</code>
+                        can have one <code>text</code>(for telling the user what to do) and one <code>testing</code> component, since we can
+                        have multiple <code>is</code> components within testing it’s easy to write many <code>is</code> <em>assertions</em>
+                        to validate given input.</p>
+                </div>
+                <div class="paragraph">
+                    <p>In the example <code>is</code> component takes a form which is supposed to return either <em>true</em> or
+                        <em>false</em> if it is true test passes if not it fails. <code>form-used?</code> is a predefined function in the
+                        platform basically it checks the given form that exists in the user&#8217;s code. You can check <a
+                                href="#predefined-functions">Predefined Functions</a>.</p>
+                </div>
+                <div class="paragraph">
+                    <p>At the bottom <code>'hello-world</code> indicates namespace of our subject.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Let&#8217;s run our command to be sure that we are on the right track:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>lein clojurecademy test</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Here what we get(again):</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>Map is valid. There is no test var defined.Please add <em>defcoursetest</em> for testing.</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Let&#8217;s focus on this message: <code>There is no test var defined.Please add <em>defcoursetest</em> for testing.</code>
+                        which means we need to write a test(not the test we know of) that validates our instruction so we will be sure that
+                        this instruction has a <strong>working solution</strong>, the thing is we are going to write user&#8217;s code(code
+                        that users provide to pass instruction).</p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        Before writing test we need to add required ns:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>[clojurecademy.dsl.test :refer [defcoursetest]]</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        Now, please add following code under the <em>course-map</em>, then run <code>lein clojurecademy test</code>:</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">defcoursetest</span> <span
+        class="tok-nv">my-test</span>
+  <span class="tok-p">[</span><span class="tok-nv">ch-intro</span> <span class="tok-nv">sub-ch-basics</span> <span class="tok-nv">subj-hello-world</span> <span
+            class="tok-nv">ins-clojure-helloworld</span> <span class="tok-nv">sub-ins-hello-world</span><span class="tok-p">]</span>
+  <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, World&quot;</span><span
+            class="tok-p">))</span></code></pre>
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p>Here is the output which indicates everything is fine and you are ready to deploy your course to
+                        <em>Clojurecademy</em>:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>Map is valid.&#160;<br>
+                        Hello, World&#160;<br>
+                        1 routes passed.</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Every <code>sub-instruction</code> needs <code>defcoursetest</code> and you can define your test where ever you like
+                        in clj files. Let&#8217;s examine <code>defcoursetest</code> in depth:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>my-test</code> is name identifier for <code>defcoursetest</code> which should be <strong>unique</strong> it
+                        works like <strong>def</strong> in Clojure.</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>[ch-intro sub-ch-basics subj-hello-world ins-clojure-helloworld sub-ins-hello-world]</code> indicates route for
+                        this sub instruction. From <code>chapter</code> to <code>sub-instruction</code> <em>(using name identifiers)</em>
+                    </p>
+                </div>
+                <div class="paragraph">
+                    <p><code>(println "Hello, World")</code> it&#8217;s assumed that users code <em>(code that provided by user)</em></p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        If you want to see your course on Clojurecademy immediately you can check here(<a href="#deployment">Deployment</a>),
+                        you can regularly deploy your course as you add/change something in your course and see it visually all the time.
+                    </p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        We said that instruction can have multiple <code>sub-instruction</code> components so let&#8217;s add new subject
+                        called <code>subj-math-fns</code> under the <code>subj-hello-world</code>:</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">subject</span>
   <span class="tok-ss">&#39;subj-math-fns</span>
   <span class="tok-s">&quot;Let&#39;s write some math functions&quot;</span>
 
   <span class="tok-p">(</span><span class="tok-nf">learn</span>
     <span class="tok-p">(</span><span class="tok-nf">text</span>
-      <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;To understand Clojure comprehensively we are going to write some basic math functions in this section.&quot;</span><span class="tok-p">)))</span>
+      <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;To understand Clojure comprehensively we are going to write some basic math functions in this section.&quot;</span><span
+            class="tok-p">)))</span>
   <span class="tok-p">(</span><span class="tok-nf">instruction</span> <span class="tok-ss">&#39;ins-subj-math-fns</span>
-               <span class="tok-p">(</span><span class="tok-nf">run-pre-tests?</span> <span class="tok-nv">false</span><span class="tok-p">)</span>
-               <span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-ss">:none</span><span class="tok-p">)</span>
-               <span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:no-rule?</span> <span class="tok-nv">true</span><span class="tok-p">)</span>
+               <span class="tok-p">(</span><span class="tok-nf">run-pre-tests?</span> <span class="tok-nv">false</span><span
+            class="tok-p">)</span>
+               <span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-ss">:none</span><span
+            class="tok-p">)</span>
+               <span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:no-rule?</span> <span
+            class="tok-nv">true</span><span class="tok-p">)</span>
 
                <span class="tok-p">(</span><span class="tok-nf">sub-instruction</span> <span class="tok-ss">&#39;sub-ins-my-add</span>
                                 <span class="tok-p">(</span><span class="tok-nf">text</span>
                                   <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Please write a function called &quot;</span>
-                                     <span class="tok-p">(</span><span class="tok-nf">hi</span> <span class="tok-s">&quot;my-add&quot;</span><span class="tok-p">)</span>
+                                     <span class="tok-p">(</span><span class="tok-nf">hi</span> <span
+            class="tok-s">&quot;my-add&quot;</span><span class="tok-p">)</span>
                                      <span class="tok-s">&quot; which adds given numbers&quot;</span><span class="tok-p">))</span>
                                 <span class="tok-p">(</span><span class="tok-nf">testing</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-add</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-mi">1</span><span class="tok-p">))</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-add</span> <span class="tok-mi">1</span> <span class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-mi">3</span><span class="tok-p">))</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-add</span> <span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span> <span class="tok-mi">6</span><span class="tok-p">)</span> <span class="tok-mi">21</span><span class="tok-p">))))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-add</span> <span class="tok-mi">1</span><span
+            class="tok-p">)</span> <span class="tok-mi">1</span><span class="tok-p">))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-add</span> <span class="tok-mi">1</span> <span
+            class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-mi">3</span><span class="tok-p">))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-add</span> <span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span> <span
+            class="tok-mi">6</span><span class="tok-p">)</span> <span class="tok-mi">21</span><span class="tok-p">))))</span>
 
                <span class="tok-p">(</span><span class="tok-nf">sub-instruction</span> <span class="tok-ss">&#39;sub-ins-my-subs</span>
                                 <span class="tok-p">(</span><span class="tok-nf">text</span>
                                   <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Please write a function called &quot;</span>
-                                     <span class="tok-p">(</span><span class="tok-nf">hi</span> <span class="tok-s">&quot;my-subs&quot;</span><span class="tok-p">)</span>
+                                     <span class="tok-p">(</span><span class="tok-nf">hi</span> <span
+            class="tok-s">&quot;my-subs&quot;</span><span class="tok-p">)</span>
                                      <span class="tok-s">&quot; which subtracts given numbers&quot;</span><span class="tok-p">))</span>
                                 <span class="tok-p">(</span><span class="tok-nf">testing</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-subs</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-mi">-1</span><span class="tok-p">))</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-subs</span> <span class="tok-mi">2</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-mi">1</span><span class="tok-p">))</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-subs</span> <span class="tok-mi">100</span> <span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">)</span> <span class="tok-mi">85</span><span class="tok-p">)))))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-subs</span> <span class="tok-mi">1</span><span
+            class="tok-p">)</span> <span class="tok-mi">-1</span><span class="tok-p">))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-subs</span> <span class="tok-mi">2</span> <span
+            class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-mi">1</span><span class="tok-p">))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-subs</span> <span class="tok-mi">100</span> <span
+            class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span
+            class="tok-mi">5</span><span class="tok-p">)</span> <span class="tok-mi">85</span><span class="tok-p">)))))</span>
   <span class="tok-ss">&#39;subj-math-fns</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And it&#8217;s <code>defcourtests</code> would be like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">defcoursetest</span> <span class="tok-nv">my-test-2</span>
-               <span class="tok-p">[</span><span class="tok-nv">ch-intro</span> <span class="tok-nv">sub-ch-basics</span> <span class="tok-nv">subj-math-fns</span> <span class="tok-nv">ins-subj-math-fns</span> <span class="tok-nv">sub-ins-my-add</span><span class="tok-p">]</span>
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p>And it&#8217;s <code>defcourtests</code> would be like this:</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">defcoursetest</span> <span
+        class="tok-nv">my-test-2</span>
+               <span class="tok-p">[</span><span class="tok-nv">ch-intro</span> <span class="tok-nv">sub-ch-basics</span> <span
+            class="tok-nv">subj-math-fns</span> <span class="tok-nv">ins-subj-math-fns</span> <span
+            class="tok-nv">sub-ins-my-add</span><span class="tok-p">]</span>
                <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">my-add</span>
                  <span class="tok-p">[</span><span class="tok-o">&amp;</span> <span class="tok-nv">args</span><span class="tok-p">]</span>
-                 <span class="tok-p">(</span><span class="tok-nb">apply + </span><span class="tok-nv">args</span><span class="tok-p">)))</span>
+                 <span class="tok-p">(</span><span class="tok-nb">apply + </span><span class="tok-nv">args</span><span
+            class="tok-p">)))</span>
 
 <span class="tok-p">(</span><span class="tok-nf">defcoursetest</span> <span class="tok-nv">my-test-3</span>
-               <span class="tok-p">[</span><span class="tok-nv">ch-intro</span> <span class="tok-nv">sub-ch-basics</span> <span class="tok-nv">subj-math-fns</span> <span class="tok-nv">ins-subj-math-fns</span> <span class="tok-nv">sub-ins-my-subs</span><span class="tok-p">]</span>
+               <span class="tok-p">[</span><span class="tok-nv">ch-intro</span> <span class="tok-nv">sub-ch-basics</span> <span
+            class="tok-nv">subj-math-fns</span> <span class="tok-nv">ins-subj-math-fns</span> <span
+            class="tok-nv">sub-ins-my-subs</span><span class="tok-p">]</span>
                <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">my-subs</span>
                  <span class="tok-p">[</span><span class="tok-o">&amp;</span> <span class="tok-nv">args</span><span class="tok-p">]</span>
-                 <span class="tok-p">(</span><span class="tok-nb">apply - </span><span class="tok-nv">args</span><span class="tok-p">)))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="run-pre-test"><a class="link" href="#run-pre-test">run-pre-tests?</a></h3>
-<div class="paragraph">
-<p><code>run-pre-tests?</code> can have either <strong>true</strong> or <strong>false</strong> as a parameter, if it is true sub instructions before current sub instruction going to be checked(<em>e.g. before executing 3. instruction 1. and 2. instructions going to be executed to check that they pass or not</em>), if false current sub instruction will be checked only.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="initial-code"><a class="link" href="#initial-code">initial-code</a></h3>
-<div class="paragraph">
-<p><code>initial-code</code> is Clojure code that will be provided in the editor to users, there are couple of ways to initialize <code>initial-code</code>.</p>
-</div>
-<div class="paragraph">
-<p>Since <code>initial-code</code> is a <strong>macro</strong> you can provide simple Clojure code like this:</p>
-</div>
-<div class="paragraph">
-<p><code>(initial-code (println "Hello, World"))</code></p>
-</div>
-<div class="paragraph">
-<p>You should use such a form when you don&#8217;t need formatting(<em>single line codes are perfect for that purpose</em>)</p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-You can provide code in a string form(<em>it&#8217;s good when you need nice formatting in the editor</em>):</p>
-</div>
-<div class="paragraph">
-<p><code>(initial-code "(defn my-add\n  [a b]\n  (+ a b))")</code></p>
-</div>
-<div class="paragraph">
-<p>Also <code>initial-code</code> treats to <strong>str</strong> function differently, when you want to provide <em>long and formatted code</em>, probably it won&#8217;t fit into your editor nicely so you can separate into small chunk of strings like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-p">(</span><span class="tok-nb">str </span><span class="tok-s">&quot;\n\n(println \&quot;Scalars: \\n\&quot;)\n\n\n&quot;</span>
+                 <span class="tok-p">(</span><span class="tok-nb">apply - </span><span class="tok-nv">args</span><span
+            class="tok-p">)))</span></code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="run-pre-test"><a class="link" href="#run-pre-test">run-pre-tests?</a></h3>
+                <div class="paragraph">
+                    <p><code>run-pre-tests?</code> can have either <strong>true</strong> or <strong>false</strong> as a parameter, if it is
+                        true sub instructions before current sub instruction going to be checked(<em>e.g. before executing 3. instruction 1.
+                            and 2. instructions going to be executed to check that they pass or not</em>), if false current sub instruction
+                        will be checked only.</p>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="initial-code"><a class="link" href="#initial-code">initial-code</a></h3>
+                <div class="paragraph">
+                    <p><code>initial-code</code> is Clojure code that will be provided in the editor to users, there are couple of ways to
+                        initialize <code>initial-code</code>.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Since <code>initial-code</code> is a <strong>macro</strong> you can provide simple Clojure code like this:</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>(initial-code (println "Hello, World"))</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>You should use such a form when you don&#8217;t need formatting(<em>single line codes are perfect for that
+                        purpose</em>)</p>
+                </div>
+                <div class="paragraph">
+                    <p>&#160;<br>
+                        You can provide code in a string form(<em>it&#8217;s good when you need nice formatting in the editor</em>):</p>
+                </div>
+                <div class="paragraph">
+                    <p><code>(initial-code "(defn my-add\n [a b]\n (+ a b))")</code></p>
+                </div>
+                <div class="paragraph">
+                    <p>Also <code>initial-code</code> treats to <strong>str</strong> function differently, when you want to provide <em>long
+                        and formatted code</em>, probably it won&#8217;t fit into your editor nicely so you can separate into small chunk of
+                        strings like this:</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span
+        class="tok-p">(</span><span class="tok-nb">str </span><span
+        class="tok-s">&quot;\n\n(println \&quot;Scalars: \\n\&quot;)\n\n\n&quot;</span>
                    <span class="tok-s">&quot;(println \&quot;Type of 1 is: \&quot; (type 1) \&quot;\\n\&quot;)\n\n\n&quot;</span>
                    <span class="tok-s">&quot;(println \&quot;Type of 1.2 is: \&quot; (type 1.2) \&quot;\\n\&quot;)\n\n\n&quot;</span>
                    <span class="tok-s">&quot;(println \&quot;Type of 1N is: \&quot; (type 1N) \&quot;\\n\&quot;)\n\n\n&quot;</span>
-                   <span class="tok-s">&quot;(println \&quot;Type of &#39;my-s is: \&quot; (type &#39;my-s) \&quot;\\n\&quot;)&quot;</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If you provide namespace in initial-code then you don&#8217;t have to declare ns in subject, for example:
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
+                   <span class="tok-s">&quot;(println \&quot;Type of &#39;my-s is: \&quot; (type &#39;my-s) \&quot;\\n\&quot;)&quot;</span><span
+            class="tok-p">))</span></code></pre>
+                    </div>
+                </div>
+                <div class="admonitionblock note">
+                    <table>
+                        <tr>
+                            <td class="icon">
+                                <div class="title">Note</div>
+                            </td>
+                            <td class="content">
+                                If you provide namespace in initial-code then you don&#8217;t have to declare ns in subject, for example:
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">subject</span>
   <span class="tok-ss">&#39;subj-initial-code-ns-ex</span>
   <span class="tok-s">&quot;Let&#39;s see some initial code&quot;</span>
 
   <span class="tok-p">(</span><span class="tok-nf">learn</span>
     <span class="tok-p">(</span><span class="tok-nf">text</span>
-      <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Check code in the editor&quot;</span><span class="tok-p">)))</span>
+      <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Check code in the editor&quot;</span><span
+            class="tok-p">)))</span>
   <span class="tok-p">(</span><span class="tok-nf">instruction</span> <span class="tok-ss">&#39;ins</span>
-               <span class="tok-p">(</span><span class="tok-nf">run-pre-tests?</span> <span class="tok-nv">true</span><span class="tok-p">)</span>
+               <span class="tok-p">(</span><span class="tok-nf">run-pre-tests?</span> <span class="tok-nv">true</span><span
+            class="tok-p">)</span>
                <span class="tok-c1">;; ns will be fetched from initial-code</span>
-               <span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-s">&quot;\n(ns clj.core\n  (:require [clojure.string :as str]))\n\n(defn your-fn\n  []\n  )&quot;</span><span class="tok-p">)</span>
-               <span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:no-rule?</span> <span class="tok-nv">true</span><span class="tok-p">)</span>
+               <span class="tok-p">(</span><span class="tok-nf">initial-code</span> <span class="tok-s">&quot;\n(ns clj.core\n  (:require [clojure.string :as str]))\n\n(defn your-fn\n  []\n  )&quot;</span><span
+            class="tok-p">)</span>
+               <span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:no-rule?</span> <span
+            class="tok-nv">true</span><span class="tok-p">)</span>
 
                <span class="tok-p">(</span><span class="tok-nf">sub-instruction</span> <span class="tok-ss">&#39;sub-ins</span>
                                 <span class="tok-p">(</span><span class="tok-nf">text</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Please click the Run button&quot;</span><span class="tok-p">))</span>
+                                  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Please click the Run button&quot;</span><span
+            class="tok-p">))</span>
                                 <span class="tok-p">(</span><span class="tok-nf">testing</span>
                                   <span class="tok-c1">;;mock true for demo</span>
-                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">true? </span><span class="tok-nv">true</span><span class="tok-p">))))))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="rule"><a class="link" href="#rule">rule</a></h3>
-<div class="paragraph">
-<p><code>rule</code> allows us to have some control over user&#8217;s code and it has a couple of powerful options such as <code>:restricted-fns</code>, <code>:required-fns</code> and <code>:only-use-one-fn?</code>.</p>
-</div>
-<div class="paragraph">
-<p>When you want to restrict couple of functions/symbols you need to use <code>:restricted-fns</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
+                                  <span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span
+            class="tok-nb">true? </span><span class="tok-nv">true</span><span class="tok-p">))))))</span></code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="rule"><a class="link" href="#rule">rule</a></h3>
+                <div class="paragraph">
+                    <p><code>rule</code> allows us to have some control over user&#8217;s code and it has a couple of powerful options such
+                        as <code>:restricted-fns</code>, <code>:required-fns</code> and <code>:only-use-one-fn?</code>.</p>
+                </div>
+                <div class="paragraph">
+                    <p>When you want to restrict couple of functions/symbols you need to use <code>:restricted-fns</code></p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;; users can&#39;t use last and reduce functions in their code</span>
-<span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:restricted-fns</span> <span class="tok-o">&#39;</span><span class="tok-p">[</span><span class="tok-nb">last </span><span class="tok-nv">reduce</span><span class="tok-p">])</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>There will be some times you might want users to provide only <strong>one function(form)</strong> and you need to use <code>:only-use-one-fn?</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
+<span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:restricted-fns</span> <span
+            class="tok-o">&#39;</span><span class="tok-p">[</span><span class="tok-nb">last </span><span class="tok-nv">reduce</span><span
+            class="tok-p">])</span></code></pre>
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p>There will be some times you might want users to provide only <strong>one function(form)</strong> and you need to use
+                        <code>:only-use-one-fn?</code></p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;; users can only provide one function/form they can not write multiple functions in their editor, if they do they will get an exception</span>
-<span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:only-use-one-fn?</span> <span class="tok-nv">true</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Also you might want users to use <strong>specific functions</strong> to construct their code and you will need to use <code>:required-fns</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
+<span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:only-use-one-fn?</span> <span
+            class="tok-nv">true</span><span class="tok-p">)</span></code></pre>
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p>Also you might want users to use <strong>specific functions</strong> to construct their code and you will need to use
+                        <code>:required-fns</code></p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;;also you have to use :only-use-one-fn? with :required-fns, the reason is we want to control those functions used in a function.</span>
-<span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:required-fns</span> <span class="tok-o">&#39;</span><span class="tok-p">[</span><span class="tok-nv">reduce</span><span class="tok-p">]</span>
+<span class="tok-p">(</span><span class="tok-nf">rule</span> <span class="tok-ss">:required-fns</span> <span class="tok-o">&#39;</span><span
+            class="tok-p">[</span><span class="tok-nv">reduce</span><span class="tok-p">]</span>
       <span class="tok-ss">:only-use-one-fn?</span> <span class="tok-nv">true</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="is"><a class="link" href="#is">is</a></h3>
-<div class="paragraph">
-<p><code>is</code> components will be defined within a <code>testing</code> component, basically <code>is</code> components are test assertions and form after is returns either true(test passes) or false(test fails):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">5</span><span class="tok-p">))</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="is"><a class="link" href="#is">is</a></h3>
+                <div class="paragraph">
+                    <p><code>is</code> components will be defined within a <code>testing</code> component, basically <code>is</code>
+                        components are test assertions and form after is returns either true(test passes) or false(test fails):</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">is</span> <span
+        class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span
+        class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span
+        class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">5</span><span class="tok-p">))</span>
 <span class="tok-c1">;;returns true</span>
 
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">))</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span
+            class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">))</span>
 <span class="tok-c1">;;  Error: (= 5 4) -&gt; This assertion does not return true!</span>
 
 <span class="tok-c1">;You can override error message if you want to:</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span
+            class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span><span
+            class="tok-p">)</span>
 <span class="tok-c1">;;  Error: (= 5 4) -&gt; Overwritten error message, it fails!</span>
 
 
 <span class="tok-c1">;;There are couple of error messages types such as :none, :simple(default one) and :advanced</span>
 
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span> <span class="tok-ss">:none</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span
+            class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span> <span
+            class="tok-ss">:none</span><span class="tok-p">)</span>
 <span class="tok-c1">;;  Error: Overwritten error message, it fails!</span>
 
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span> <span class="tok-ss">:simple</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span
+            class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span> <span
+            class="tok-ss">:simple</span><span class="tok-p">)</span>
 <span class="tok-c1">;;  Error: (= 5 4) -&gt; Overwritten error message, it fails!</span>
 
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span> <span class="tok-ss">:advanced</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span
+            class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-s">&quot;Overwritten error message, it fails!&quot;</span> <span
+            class="tok-ss">:advanced</span><span class="tok-p">)</span>
 <span class="tok-c1">;;  Error: (= (my-last [1 2 3 4 5]) 4) =&gt; (= 5 4) -&gt; Overwritten error message, it fails!</span>
 
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-ss">:default</span> <span class="tok-ss">:advanced</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-p">(</span><span class="tok-nf">my-last</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span
+            class="tok-mi">2</span> <span class="tok-mi">3</span> <span class="tok-mi">4</span> <span class="tok-mi">5</span><span
+            class="tok-p">])</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-ss">:default</span> <span
+            class="tok-ss">:advanced</span><span class="tok-p">)</span>
 <span class="tok-c1">;;  Error: (= (my-last [1 2 3 4 5]) 4) =&gt; (= 5 4) -&gt; This assertion does not return true!</span></code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-Also is component treats macros differently when it comes to error message representation(:advanced error message type), if you want to use a macro in is component, check error messages before releasing it, the reason is sometimes error messages might not make sense(especially having nested and long codes).
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="text"><a class="link" href="#text">text</a></h3>
-<div class="paragraph">
-<p><code>text</code> can take 2 different <em>sub text components</em> called <code>p(paragraph)</code> and <code>code</code>.You can define as many <code>p</code> or <code>code</code> components as you want within text:</p>
-</div>
-<div class="listingblock">
-<div class="content">
+                    </div>
+                </div>
+                <div class="admonitionblock important">
+                    <table>
+                        <tr>
+                            <td class="icon">
+                                <div class="title">Important</div>
+                            </td>
+                            <td class="content">
+                                Also is component treats macros differently when it comes to error message representation(:advanced error
+                                message type), if you want to use a macro in is component, check error messages before releasing it, the
+                                reason is sometimes error messages might not make sense(especially having nested and long codes).
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="sect2">
+                <h3 id="text"><a class="link" href="#text">text</a></h3>
+                <div class="paragraph">
+                    <p><code>text</code> can take 2 different <em>sub text components</em> called <code>p(paragraph)</code> and
+                        <code>code</code>.You can define as many <code>p</code> or <code>code</code> components as you want within text:</p>
+                </div>
+                <div class="listingblock">
+                    <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">text</span>
-  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Clojure is a&quot;</span> <span class="tok-p">(</span><span class="tok-nf">hi</span> <span class="tok-s">&quot;functional programming&quot;</span><span class="tok-p">)</span> <span class="tok-s">&quot;language.&quot;</span>
-     <span class="tok-s">&quot;It runs on &quot;</span> <span class="tok-p">(</span><span class="tok-nf">italic</span> <span class="tok-s">&quot;JVM&quot;</span><span class="tok-p">)</span> <span class="tok-s">&quot; and &quot;</span> <span class="tok-p">(</span><span class="tok-nf">bold</span> <span class="tok-s">&quot;other platforms(JavaScript, CLR)&quot;</span><span class="tok-p">)</span>
-     <span class="tok-s">&quot;Check Clojure&#39;s Official site: &quot;</span> <span class="tok-p">(</span><span class="tok-nf">link</span> <span class="tok-s">&quot;Clojure Site&quot;</span> <span class="tok-s">&quot;https://clojure.org&quot;</span><span class="tok-p">))</span>
+  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Clojure is a&quot;</span> <span class="tok-p">(</span><span
+            class="tok-nf">hi</span> <span class="tok-s">&quot;functional programming&quot;</span><span class="tok-p">)</span> <span
+            class="tok-s">&quot;language.&quot;</span>
+     <span class="tok-s">&quot;It runs on &quot;</span> <span class="tok-p">(</span><span class="tok-nf">italic</span> <span class="tok-s">&quot;JVM&quot;</span><span
+            class="tok-p">)</span> <span class="tok-s">&quot; and &quot;</span> <span class="tok-p">(</span><span class="tok-nf">bold</span> <span
+            class="tok-s">&quot;other platforms(JavaScript, CLR)&quot;</span><span class="tok-p">)</span>
+     <span class="tok-s">&quot;Check Clojure&#39;s Official site: &quot;</span> <span class="tok-p">(</span><span class="tok-nf">link</span> <span
+            class="tok-s">&quot;Clojure Site&quot;</span> <span class="tok-s">&quot;https://clojure.org&quot;</span><span
+            class="tok-p">))</span>
 
-  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Here is the Clojure code:&quot;</span><span class="tok-p">)</span>
-  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span class="tok-p">))</span>
+  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Here is the Clojure code:&quot;</span><span
+            class="tok-p">)</span>
+  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-p">(</span><span class="tok-nb">println </span><span
+            class="tok-s">&quot;Hello, world&quot;</span><span class="tok-p">))</span>
 
-  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Also you can write Clojure code like this:&quot;</span><span class="tok-p">)</span>
-  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-s">&quot;(defn my-fn\n          [x]\n          (println x))&quot;</span><span class="tok-p">)</span>
+  <span class="tok-p">(</span><span class="tok-nf">p</span> <span
+            class="tok-s">&quot;Also you can write Clojure code like this:&quot;</span><span class="tok-p">)</span>
+  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-s">&quot;(defn my-fn\n          [x]\n          (println x))&quot;</span><span
+            class="tok-p">)</span>
 
-  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;You wanna show some &quot;</span> <span class="tok-p">(</span><span class="tok-nf">hi</span> <span class="tok-s">&quot;Ruby&quot;</span><span class="tok-p">)</span> <span class="tok-s">&quot; code?&quot;</span><span class="tok-p">)</span>
-  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-s">&quot;ruby&quot;</span> <span class="tok-s">&quot;puts &#39;Hello, world!&#39;&quot;</span><span class="tok-p">)</span>
+  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;You wanna show some &quot;</span> <span class="tok-p">(</span><span
+            class="tok-nf">hi</span> <span class="tok-s">&quot;Ruby&quot;</span><span class="tok-p">)</span> <span class="tok-s">&quot; code?&quot;</span><span
+            class="tok-p">)</span>
+  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-s">&quot;ruby&quot;</span> <span class="tok-s">&quot;puts &#39;Hello, world!&#39;&quot;</span><span
+            class="tok-p">)</span>
 
-  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Or some &quot;</span> <span class="tok-p">(</span><span class="tok-nf">hi</span> <span class="tok-s">&quot;python&quot;</span><span class="tok-p">)</span> <span class="tok-s">&quot;?&quot;</span><span class="tok-p">)</span>
-  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-s">&quot;python&quot;</span> <span class="tok-s">&quot;def printme( str ):\n   print str\n   return;&quot;</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><code>code</code> supports 9+ programming languages</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure (default)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ruby</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clike (c/c++, java etc.)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">haskell</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">javascript</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">python</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">scheme</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">commonlisp</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">erlang</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Also <code>code</code> treats <strong>str</strong> function in a same way with <code>initial-code</code> so you can split your long formatted codes into smaller strings.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ordering"><a class="link" href="#ordering">Ordering</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Ordering your component is an important thing to pay attention, I&#8217;ll show you how to not make critical mistakes.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s assume you have course structure like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">course</span> <span class="tok-nv">my-manifest</span>
-        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-intro</span> <span class="tok-nv">...</span><span class="tok-p">)</span>
-        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-examples</span> <span class="tok-nv">...</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And you want to re-order your chapters(you can do for all components as well) take a look at the following code(which is totally okay):</p>
-</div>
-<div class="listingblock">
-<div class="content">
+  <span class="tok-p">(</span><span class="tok-nf">p</span> <span class="tok-s">&quot;Or some &quot;</span> <span
+            class="tok-p">(</span><span class="tok-nf">hi</span> <span class="tok-s">&quot;python&quot;</span><span
+            class="tok-p">)</span> <span class="tok-s">&quot;?&quot;</span><span class="tok-p">)</span>
+  <span class="tok-p">(</span><span class="tok-nf">code</span> <span class="tok-s">&quot;python&quot;</span> <span class="tok-s">&quot;def printme( str ):\n   print str\n   return;&quot;</span><span
+            class="tok-p">))</span></code></pre>
+                    </div>
+                </div>
+                <div class="paragraph">
+                    <p><code>code</code> supports 9+ programming languages</p>
+                </div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 100%;">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">clojure (default)</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">ruby</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">clike (c/c++, java etc.)</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">haskell</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">javascript</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">python</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">scheme</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">commonlisp</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">erlang</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p>Also <code>code</code> treats <strong>str</strong> function in a same way with <code>initial-code</code> so you can
+                        split your long formatted codes into smaller strings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="ordering"><a class="link" href="#ordering">Ordering</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>Ordering your component is an important thing to pay attention, I&#8217;ll show you how to not make critical
+                    mistakes.</p>
+            </div>
+            <div class="paragraph">
+                <p>Let&#8217;s assume you have course structure like this:</p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">course</span> <span
+        class="tok-nv">my-manifest</span>
+        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-intro</span> <span
+            class="tok-nv">...</span><span class="tok-p">)</span>
+        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-examples</span> <span class="tok-nv">...</span><span
+            class="tok-p">))</span></code></pre>
+                </div>
+            </div>
+            <div class="paragraph">
+                <p>And you want to re-order your chapters(you can do for all components as well) take a look at the following code(which is
+                    totally okay):</p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;;re-ordered, that&#39;s fine</span>
 <span class="tok-p">(</span><span class="tok-nf">course</span> <span class="tok-nv">my-manifest</span>
-        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-examples</span> <span class="tok-nv">...</span><span class="tok-p">)</span>
-        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-intro</span> <span class="tok-nv">...</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>But let&#8217;s say you wanted to change name identifier of ch-intro to ch-basics and have something like this:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">course</span> <span class="tok-nv">my-manifest</span>
-        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-examples</span> <span class="tok-nv">...</span><span class="tok-p">)</span>
-        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-basics</span> <span class="tok-nv">...</span><span class="tok-p">))</span></code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-This is the critical part if you change name identifier of any component that(ch-basics) component will be deactivated(new component will be created ch-basics) in course and if you have existing course and some users enrolled that course they won&#8217;t be able to see that chapter so the thing is you can change name identifiers of components that&#8217;s fine but before doing that take those outcomes into account but if you are just in development stage that&#8217;s fine.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Like we said if you change name identifier that component will be deactivated(not deleted) so you can re-change name identifier to old name it will show up again(no data loss).
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="predefined-functions"><a class="link" href="#predefined-functions">Predefined Functions</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Predefined functions are built-in functions of Clojurecademy that we use to validate user&#8217;s code in <code>is</code> components.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s use predefined functions on following code that provided by a user:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-kd">ns </span><span class="tok-nv">clojure-intro</span><span class="tok-p">)</span>
+        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-examples</span> <span class="tok-nv">...</span><span
+            class="tok-p">)</span>
+        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-intro</span> <span
+            class="tok-nv">...</span><span class="tok-p">))</span></code></pre>
+                </div>
+            </div>
+            <div class="paragraph">
+                <p>But let&#8217;s say you wanted to change name identifier of ch-intro to ch-basics and have something like this:</p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">course</span> <span
+        class="tok-nv">my-manifest</span>
+        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-examples</span> <span class="tok-nv">...</span><span
+            class="tok-p">)</span>
+        <span class="tok-p">(</span><span class="tok-nf">chapter</span> <span class="tok-ss">&#39;ch-basics</span> <span
+            class="tok-nv">...</span><span class="tok-p">))</span></code></pre>
+                </div>
+            </div>
+            <div class="admonitionblock important">
+                <table>
+                    <tr>
+                        <td class="icon">
+                            <div class="title">Important</div>
+                        </td>
+                        <td class="content">
+                            This is the critical part if you change name identifier of any component that(ch-basics) component will be
+                            deactivated(new component will be created ch-basics) in course and if you have existing course and some users
+                            enrolled that course they won&#8217;t be able to see that chapter so the thing is you can change name
+                            identifiers of components that&#8217;s fine but before doing that take those outcomes into account but if you
+                            are just in development stage that&#8217;s fine.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="admonitionblock note">
+                <table>
+                    <tr>
+                        <td class="icon">
+                            <div class="title">Note</div>
+                        </td>
+                        <td class="content">
+                            Like we said if you change name identifier that component will be deactivated(not deleted) so you can re-change
+                            name identifier to old name it will show up again(no data loss).
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="predefined-functions"><a class="link" href="#predefined-functions">Predefined Functions</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>Predefined functions are built-in functions of Clojurecademy that we use to validate user&#8217;s code in <code>is</code>
+                    components.</p>
+            </div>
+            <div class="paragraph">
+                <p>Let&#8217;s use predefined functions on following code that provided by a user:</p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-kd">ns </span><span
+        class="tok-nv">clojure-intro</span><span class="tok-p">)</span>
 
-<span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span
+            class="tok-p">)</span>
 
 <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">my-add</span>
   <span class="tok-p">[</span><span class="tok-o">&amp;</span> <span class="tok-nv">args</span><span class="tok-p">]</span>
   <span class="tok-p">(</span><span class="tok-nb">apply + </span><span class="tok-nv">args</span><span class="tok-p">))</span>
 
-<span class="tok-p">(</span><span class="tok-nb">- </span><span class="tok-mi">3</span> <span class="tok-mi">2</span> <span class="tok-mi">1</span><span class="tok-p">)</span>
+<span class="tok-p">(</span><span class="tok-nb">- </span><span class="tok-mi">3</span> <span class="tok-mi">2</span> <span
+            class="tok-mi">1</span><span class="tok-p">)</span>
 
 <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">my-fn</span>
   <span class="tok-p">[]</span>
@@ -874,234 +1065,288 @@ Like we said if you change name identifier that component will be deactivated(no
 
 <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">throw-runtime-ex</span>
   <span class="tok-p">[]</span>
-  <span class="tok-p">(</span><span class="tok-nf">throw</span> <span class="tok-p">(</span><span class="tok-nf">RuntimeException.</span> <span class="tok-s">&quot;Damn!&quot;</span><span class="tok-p">)))</span>
+  <span class="tok-p">(</span><span class="tok-nf">throw</span> <span class="tok-p">(</span><span
+            class="tok-nf">RuntimeException.</span> <span class="tok-s">&quot;Damn!&quot;</span><span class="tok-p">)))</span>
 
-<span class="tok-p">(</span><span class="tok-nb">+ </span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Usage:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span class="tok-nf">all-forms</span><span class="tok-p">)</span> <span class="tok-c1">;returns user&#39;s code as a data structure except ns form</span>
-<span class="tok-p">(</span><span class="tok-nf">all-forms</span> <span class="tok-nv">true</span><span class="tok-p">)</span> <span class="tok-c1">;returns user&#39;s code as a data structure including ns form</span>
+<span class="tok-p">(</span><span class="tok-nb">+ </span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span
+            class="tok-mi">3</span><span class="tok-p">)</span></code></pre>
+                </div>
+            </div>
+            <div class="paragraph">
+                <p>Usage:</p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-p">(</span><span
+        class="tok-nf">all-forms</span><span class="tok-p">)</span> <span class="tok-c1">;returns user&#39;s code as a data structure except ns form</span>
+<span class="tok-p">(</span><span class="tok-nf">all-forms</span> <span class="tok-nv">true</span><span class="tok-p">)</span> <span
+            class="tok-c1">;returns user&#39;s code as a data structure including ns form</span>
 
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-nb">first </span><span class="tok-p">(</span><span class="tok-nf">all-forms</span><span class="tok-p">))))</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span
+            class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span
+            class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-nb">first </span><span class="tok-p">(</span><span
+            class="tok-nf">all-forms</span><span class="tok-p">))))</span>
 
-<span class="tok-p">(</span><span class="tok-nf">form-used?</span> <span class="tok-nv">&lt;form&gt;</span><span class="tok-p">)</span> <span class="tok-c1">;checks that form used at top level in code</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">form-used?</span> <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span class="tok-p">)))</span>
+<span class="tok-p">(</span><span class="tok-nf">form-used?</span> <span class="tok-nv">&lt;form&gt;</span><span
+            class="tok-p">)</span> <span class="tok-c1">;checks that form used at top level in code</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">form-used?</span> <span
+            class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span
+            class="tok-p">)))</span>
 
-<span class="tok-p">(</span><span class="tok-nf">form-used-nes?</span> <span class="tok-nv">&lt;form&gt;</span><span class="tok-p">)</span> <span class="tok-c1">;checks that form used anywhere(nested structure) in code</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">form-used-nes?</span> <span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;I&#39;m Here!&quot;</span><span class="tok-p">)))</span>
+<span class="tok-p">(</span><span class="tok-nf">form-used-nes?</span> <span class="tok-nv">&lt;form&gt;</span><span class="tok-p">)</span> <span
+            class="tok-c1">;checks that form used anywhere(nested structure) in code</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">form-used-nes?</span> <span
+            class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;I&#39;m Here!&quot;</span><span
+            class="tok-p">)))</span>
 
 <span class="tok-p">(</span><span class="tok-nf">ns-form</span><span class="tok-p">)</span> <span class="tok-c1">;returns ns form of the code</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-ss">&#39;clojure-intro</span> <span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-p">(</span><span class="tok-nf">ns-form</span><span class="tok-p">))))</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-ss">&#39;clojure-intro</span> <span
+            class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-p">(</span><span class="tok-nf">ns-form</span><span
+            class="tok-p">))))</span>
 
 <span class="tok-p">(</span><span class="tok-nf">first-form</span><span class="tok-p">)</span> <span class="tok-c1">;returns first form of the code(ns excluded)</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-nf">first-form</span><span class="tok-p">)))</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span
+            class="tok-p">(</span><span class="tok-nb">println </span><span class="tok-s">&quot;Hello, world&quot;</span><span
+            class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-nf">first-form</span><span class="tok-p">)))</span>
 
 <span class="tok-p">(</span><span class="tok-nf">second-form</span><span class="tok-p">)</span> <span class="tok-c1">;returns second form of the code(ns excluded)</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">my-add</span> <span class="tok-p">[</span><span class="tok-o">&amp;</span> <span class="tok-nv">args</span><span class="tok-p">]</span> <span class="tok-p">(</span><span class="tok-nb">apply + </span><span class="tok-nv">args</span><span class="tok-p">))</span> <span class="tok-p">(</span><span class="tok-nf">second-form</span><span class="tok-p">)))</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span
+            class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">my-add</span> <span class="tok-p">[</span><span
+            class="tok-o">&amp;</span> <span class="tok-nv">args</span><span class="tok-p">]</span> <span class="tok-p">(</span><span
+            class="tok-nb">apply + </span><span class="tok-nv">args</span><span class="tok-p">))</span> <span class="tok-p">(</span><span
+            class="tok-nf">second-form</span><span class="tok-p">)))</span>
 
 <span class="tok-p">(</span><span class="tok-nf">nth-form</span><span class="tok-p">)</span> <span class="tok-c1">;returns nth form of the code(ns excluded)</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span class="tok-p">(</span><span class="tok-nb">- </span><span class="tok-mi">3</span> <span class="tok-mi">2</span> <span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-nf">nth-form</span> <span class="tok-mi">2</span><span class="tok-p">)))</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-o">&#39;</span><span
+            class="tok-p">(</span><span class="tok-nb">- </span><span class="tok-mi">3</span> <span class="tok-mi">2</span> <span
+            class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-nf">nth-form</span> <span
+            class="tok-mi">2</span><span class="tok-p">)))</span>
 
-<span class="tok-p">(</span><span class="tok-nf">eval-ds</span> <span class="tok-nv">&lt;form&gt;</span><span class="tok-p">)</span> <span class="tok-c1">;evaluates the given form and returns the result</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-mi">6</span> <span class="tok-p">(</span><span class="tok-nf">eval-ds</span> <span class="tok-p">(</span><span class="tok-nb">last </span><span class="tok-p">(</span><span class="tok-nf">all-forms</span><span class="tok-p">)))))</span>
+<span class="tok-p">(</span><span class="tok-nf">eval-ds</span> <span class="tok-nv">&lt;form&gt;</span><span class="tok-p">)</span> <span
+            class="tok-c1">;evaluates the given form and returns the result</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nb">= </span><span
+            class="tok-mi">6</span> <span class="tok-p">(</span><span class="tok-nf">eval-ds</span> <span class="tok-p">(</span><span
+            class="tok-nb">last </span><span class="tok-p">(</span><span class="tok-nf">all-forms</span><span class="tok-p">)))))</span>
 
-<span class="tok-p">(</span><span class="tok-nf">throws?</span> <span class="tok-nv">...</span><span class="tok-p">)</span> <span class="tok-c1">;checks the given code that throws an exception or not</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">throws?</span> <span class="tok-nv">RuntimeException</span> <span class="tok-p">(</span><span class="tok-nf">throw-runtime-ex</span><span class="tok-p">)))</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="helper-functions"><a class="link" href="#helper-functions">Helper Functions</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As an author, you can define your own functions to validate user&#8217;s input and it reduces the duplicate code for validation.</p>
-</div>
-<div class="paragraph">
-<p>First of all, let&#8217;s create <strong>helper-fns.clj</strong> in the same directory with <strong>core.clj</strong> and write the following code:</p>
-</div>
-<div class="listingblock">
-<div class="content">
+<span class="tok-p">(</span><span class="tok-nf">throws?</span> <span class="tok-nv">...</span><span class="tok-p">)</span> <span
+            class="tok-c1">;checks the given code that throws an exception or not</span>
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">throws?</span> <span
+            class="tok-nv">RuntimeException</span> <span class="tok-p">(</span><span class="tok-nf">throw-runtime-ex</span><span
+            class="tok-p">)))</span></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="helper-functions"><a class="link" href="#helper-functions">Helper Functions</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>As an author, you can define your own functions to validate user&#8217;s input and it reduces the duplicate code for
+                    validation.</p>
+            </div>
+            <div class="paragraph">
+                <p>First of all, let&#8217;s create <strong>helper-fns.clj</strong> in the same directory with <strong>core.clj</strong> and
+                    write the following code:</p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;;checks that str/join function declared in user&#39;scode</span>
 <span class="tok-p">(</span><span class="tok-kd">defn </span><span class="tok-nv">str-join-used?</span>
   <span class="tok-p">[</span><span class="tok-nv">all-forms</span><span class="tok-p">]</span>
-  <span class="tok-p">((</span><span class="tok-nb">complement </span><span class="tok-nv">not-any?</span><span class="tok-p">)</span> <span class="tok-p">(</span><span class="tok-k">fn </span><span class="tok-p">[</span><span class="tok-nv">form</span><span class="tok-p">]</span>
-                           <span class="tok-p">(</span><span class="tok-nb">and </span><span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-ss">&#39;str/join</span> <span class="tok-p">(</span><span class="tok-nb">first </span><span class="tok-nv">form</span><span class="tok-p">))</span>
-                                <span class="tok-p">(</span><span class="tok-nb">vector? </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">form</span><span class="tok-p">))</span>
-                                <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-mi">2</span> <span class="tok-p">(</span><span class="tok-nb">count </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">form</span><span class="tok-p">)))))</span>
-    <span class="tok-p">(</span><span class="tok-nb">filter </span><span class="tok-nv">list?</span> <span class="tok-nv">all-forms</span><span class="tok-p">)))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Also, you need to specify your helper namespace in <strong>project.clj</strong> to be able to use it:</p>
-</div>
-<div class="paragraph">
-<p><code>:helper-fns-ns clj.helper-fns</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
+  <span class="tok-p">((</span><span class="tok-nb">complement </span><span class="tok-nv">not-any?</span><span class="tok-p">)</span> <span
+            class="tok-p">(</span><span class="tok-k">fn </span><span class="tok-p">[</span><span class="tok-nv">form</span><span
+            class="tok-p">]</span>
+                           <span class="tok-p">(</span><span class="tok-nb">and </span><span class="tok-p">(</span><span
+            class="tok-nb">= </span><span class="tok-ss">&#39;str/join</span> <span class="tok-p">(</span><span class="tok-nb">first </span><span
+            class="tok-nv">form</span><span class="tok-p">))</span>
+                                <span class="tok-p">(</span><span class="tok-nb">vector? </span><span class="tok-p">(</span><span
+            class="tok-nb">second </span><span class="tok-nv">form</span><span class="tok-p">))</span>
+                                <span class="tok-p">(</span><span class="tok-nb">= </span><span class="tok-mi">2</span> <span class="tok-p">(</span><span
+            class="tok-nb">count </span><span class="tok-p">(</span><span class="tok-nb">second </span><span class="tok-nv">form</span><span
+            class="tok-p">)))))</span>
+    <span class="tok-p">(</span><span class="tok-nb">filter </span><span class="tok-nv">list?</span> <span
+            class="tok-nv">all-forms</span><span class="tok-p">)))</span></code></pre>
+                </div>
+            </div>
+            <div class="paragraph">
+                <p>Also, you need to specify your helper namespace in <strong>project.clj</strong> to be able to use it:</p>
+            </div>
+            <div class="paragraph">
+                <p><code>:helper-fns-ns clj.helper-fns</code></p>
+            </div>
+            <div class="listingblock">
+                <div class="content">
 <pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-c1">;now you can use your helper fn in your is component</span>
-<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">str-join-used?</span> <span class="tok-p">(</span><span class="tok-nf">all-forms</span><span class="tok-p">)))</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="plugin-commands"><a class="link" href="#plugin-commands">Plugin Commands</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There are a couple of commands that you can benefit from when writing a course.</p>
-</div>
-<div class="paragraph">
-<p><code>lein clojurecademy [options&#8230;&#8203;]</code></p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">test</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">validates course</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">test [debug or -d]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows stages while validating course</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">test [debug or -d] [advanced or -a]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows stages and creates all data structure while validating course</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autotest</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">detects file changes and runs test, it&#8217;s infinite process</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autotest [debug or -d]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">like autotest, shows stages</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autotest [debug or -d] [advanced or -a]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">like autotest, shows stages and creates all data structure</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">deploy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">deploys course to Clojurecademy site</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted namespaces, packages, symbols and objects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [namespace or -n]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted namespaces only</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [package or -p]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted packages only</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [symbol or -s]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted symbols only</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [object or -o]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted objects only</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">course</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows routes and defcoursetests of course</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">course [route or -r]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows routes of course only</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">course [test or -t]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shows defcoursetests of course only</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="deployment"><a class="link" href="#deployment">Deployment</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>When you are done with your course it’s time to deploy to Clojurecademy and the procedure is very easy, only thing you need to do is that type the following command:</p>
-</div>
-<div class="paragraph">
-<p><code>lein clojurecademy deploy</code></p>
-</div>
-<div class="paragraph">
-<p>Then you will be asked to provide your Clojurecademy username/email and password, after providing your credentials course going to be deployed/committed to the site.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-If you don&#8217;t want to provide your credentials every time you deploy it you can add your credentials to your <strong>~/.lein/profiles.clj</strong> file:
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-ss">:clojurecademy</span> <span class="tok-p">{</span><span class="tok-ss">:username-or-email</span> <span class="tok-s">&quot;your-username-or-email&quot;</span>
-                <span class="tok-ss">:password</span> <span class="tok-s">&quot;your-password&quot;</span><span class="tok-p">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you deployed your course to Clojurecademy but your course won&#8217;t be released until you release it in the UI so you need to go to Clojurecademy site and follow these steps: <code>Log In &#8594; Learn &#8594; Created Courses &#8594; Your Course &#8594; Click Release Button &#8594; Release It!</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Now users will be able to see your course, if course existed before they will get new changes.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-When you commit(deploy) your course you don&#8217;t have to Release It you will always get the latest version of your course because you are the author so please do release when your course is ready for users.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="source-code"><a class="link" href="#source-code">Source Code</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><em>Sample Course</em> is open source and can be found on <a href="https://github.com/clojurecademy/sample-course">GitHub</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="license"><a class="link" href="#license">License</a></h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
+<span class="tok-p">(</span><span class="tok-nf">is</span> <span class="tok-p">(</span><span class="tok-nf">str-join-used?</span> <span
+            class="tok-p">(</span><span class="tok-nf">all-forms</span><span class="tok-p">)))</span></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="plugin-commands"><a class="link" href="#plugin-commands">Plugin Commands</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>There are a couple of commands that you can benefit from when writing a course.</p>
+            </div>
+            <div class="paragraph">
+                <p><code>lein clojurecademy [options&#8230;&#8203;]</code></p>
+            </div>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 50%;">
+                    <col style="width: 50%;">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">test</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">validates course</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">test [debug or -d]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows stages while validating course</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">test [debug or -d] [advanced or -a]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows stages and creates all data structure while
+                        validating course</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">autotest</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">detects file changes and runs test, it&#8217;s
+                        infinite process</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">autotest [debug or -d]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">like autotest, shows stages</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">autotest [debug or -d] [advanced or -a]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">like autotest, shows stages and creates all data
+                        structure</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">deploy</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">deploys course to Clojurecademy site</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted namespaces, packages, symbols and
+                        objects</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [namespace or -n]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted namespaces only</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [package or -p]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted packages only</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [symbol or -s]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted symbols only</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">blacklist [object or -o]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows blacklisted objects only</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">course</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows routes and defcoursetests of course</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">course [route or -r]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows routes of course only</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">course [test or -t]</p></td>
+                    <td class="tableblock halign-left valign-top"><p class="tableblock">shows defcoursetests of course only</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="deployment"><a class="link" href="#deployment">Deployment</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p>When you are done with your course it’s time to deploy to Clojurecademy and the procedure is very easy, only thing you
+                    need to do is that type the following command:</p>
+            </div>
+            <div class="paragraph">
+                <p><code>lein clojurecademy deploy</code></p>
+            </div>
+            <div class="paragraph">
+                <p>Then you will be asked to provide your Clojurecademy username/email and password, after providing your credentials course
+                    going to be deployed/committed to the site.</p>
+            </div>
+            <div class="admonitionblock note">
+                <table>
+                    <tr>
+                        <td class="icon">
+                            <div class="title">Note</div>
+                        </td>
+                        <td class="content">
+                            If you don&#8217;t want to provide your credentials every time you deploy it you can add your credentials to
+                            your <strong>~/.lein/profiles.clj</strong> file:
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="listingblock">
+                <div class="content">
+<pre class="pygments highlight"><code data-lang="clojure"><span></span><span class="tok-ss">:clojurecademy</span> <span
+        class="tok-p">{</span><span class="tok-ss">:username-or-email</span> <span class="tok-s">&quot;your-username-or-email&quot;</span>
+                <span class="tok-ss">:password</span> <span class="tok-s">&quot;your-password&quot;</span><span
+            class="tok-p">}</span></code></pre>
+                </div>
+            </div>
+            <div class="paragraph">
+                <p>Now you deployed your course to Clojurecademy but your course won&#8217;t be released until you release it in the UI so
+                    you need to go to Clojurecademy site and follow these steps: <code>Log In &#8594; Learn &#8594; Created Courses &#8594;
+                        Your Course &#8594; Click Release Button &#8594; Release It!</code></p>
+            </div>
+            <div class="admonitionblock note">
+                <table>
+                    <tr>
+                        <td class="icon">
+                            <div class="title">Note</div>
+                        </td>
+                        <td class="content">
+                            Now users will be able to see your course, if course existed before they will get new changes.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="admonitionblock important">
+                <table>
+                    <tr>
+                        <td class="icon">
+                            <div class="title">Important</div>
+                        </td>
+                        <td class="content">
+                            When you commit(deploy) your course you don&#8217;t have to Release It you will always get the latest version of
+                            your course because you are the author so please do release when your course is ready for users.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="source-code"><a class="link" href="#source-code">Source Code</a></h2>
+        <div class="sectionbody">
+            <div class="paragraph">
+                <p><em>Sample Course</em> is open source and can be found on <a
+                        href="https://github.com/clojurecademy/sample-course">GitHub</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="sect1">
+        <h2 id="license"><a class="link" href="#license">License</a></h2>
+        <div class="sectionbody">
+            <div class="listingblock">
+                <div class="content">
 <pre class="pygments highlight"><code data-lang="text"><span></span>Copyright 2017 Ertuğrul Çetin
 
 Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -1115,15 +1360,15 @@ distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</code></pre>
-</div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="footer">
-<div id="footer-text">
-Last updated 2017-09-09 19:59:16 CEST
-</div>
+    <div id="footer-text">
+        Last updated 2017-09-09 19:59:16 CEST
+    </div>
 </div>
 </body>
 </html>

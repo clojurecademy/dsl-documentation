@@ -45,6 +45,12 @@ Also, you need to add lein plugin for DSL as well:
 
 `[lein-clojurecademy "0.1.55"]`
 
+Also you need to create *_~/.java.policy_* file in your home directory and add the following code:
+
+`grant {
+                     permission java.security.AllPermission;
+                     };`
+
 == Components
 
 There are several components to create a course such as `manifest`, `course`, `chapter`, `sub-chapter`, `subject`, `instruction`, `sub-instruction` and so on, now we are going to examine those components in detail.
