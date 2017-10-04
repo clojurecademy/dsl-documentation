@@ -10,7 +10,7 @@ Ertuğrul Çetin - 1.0.0
 
 == Introduction
 
-DSL for creating courses on Clojurecademy
+DSL for creating courses on link:https://clojurecademy.com[Clojurecademy]
 
 
 == Rationale
