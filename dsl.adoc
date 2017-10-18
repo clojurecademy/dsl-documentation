@@ -187,7 +187,7 @@ Now we are going to extend our course with an instruction so we will be able to 
 
     (learn
       (text
-        (p "Clojure is a functional programming that runs on JVM."))))
+        (p "Clojure is a functional programming language that runs on JVM."))))
 
   (subject
     'subj-hello-world
