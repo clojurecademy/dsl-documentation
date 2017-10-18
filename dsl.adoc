@@ -132,7 +132,7 @@ Now we are going to construct a course, let's define our course like this(don't 
 
                        (learn ;learn part for subject
                          (text
-                           (p "Clojure is a functional programming that runs on JVM."))))))))
+                           (p "Clojure is a functional programming language that runs on JVM."))))))))
 ----
 
 We created our simple course without any instructions(we will talk about it) so what do we have up there?:
